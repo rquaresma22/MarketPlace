@@ -566,7 +566,7 @@ var CategoryData =[
                 ["State", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "State" ], 
                 ["Library", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Library" ], 
                 ["Health", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Health" ], 
-                ["SuperMarket", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "SuperMarket" ], 
+                ["SuperMarket", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Supermarket" ], 
                 ["Culture", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Culture" ], 
                 ["Police", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Police" ], 
                 ["Court", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Court" ], 
@@ -585,16 +585,16 @@ var CategoryData =[
 
          ["Main Walk", 6, "Fancybox", 11,18, 15, 22, 200, 1.2, "walkA","A", ], 
             ["WaterfallA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "waterfall","B" ],
-            ["WoodhouseA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "WoodHouse","B" ],
+            ["WoodhouseA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "woodHouse","B" ],
             ["ViewWalkA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "ViewPoint1","B" ],
             ["DangerWalkA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger","B" ], 
-            ["Lake", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Lake3","B" ], 
-         ["Medium Walk", 5, "Infowindow", 13,18, 15, 36, 200, 1.2, "WalkB","A" ], 
-            ["WaterfallB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Waterfall","B" ], 
-            ["WoodhouseB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "WoodHouse","B" ],
+            ["Lake", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "lake3","B" ], 
+         ["Medium Walk", 5, "Infowindow", 13,18, 15, 36, 200, 1.2, "walkB","A" ], 
+            ["WaterfallB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "waterfall","B" ], 
+            ["WoodhouseB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "woodHouse","B" ],
             ["ViewWalkB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "ViewPoint","B" ], 
             ["DangerWalkB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger","B" ], 
-         ["Local Walk", 6, "Infowindow", 15,18, 15, 36, 200, 1.2, "WalkB","A"  ],
+         ["Local Walk", 6, "Infowindow", 15,18, 15, 36, 200, 1.2, "walkB","A"  ],
             ["DangerWalkC", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger2","B" ], 
 
          ["Parks", 5, "Infowindow", 13,18, 15, 46, 200, 1.2, "Park_icon","A" ], 
@@ -613,7 +613,6 @@ var CategoryData =[
 
 
 var locations =[
-// ordem,Cat,Title,Icon, 
 [1,"FixTop","Funchal","teste",9,18,10,75,120,0.99,0.5,32.64786928132301,-16.910195048238393,-15,0,"foto","Fix"],
 [2,"Main Cities","Machico Village","machico",11,18,20,113,172,1.5,0.4940652818991098,32.71885050273968,-16.765634789597243,15,10,"foto",""],
 
@@ -626,6 +625,8 @@ var locations =[
 [9,"Main RoundMarkers","Fanal","fanal",11,18,20,80,172,1.5,0.49795918367346936,32.8177926422609,-17.15054801766962,60,-35,"foto",""],
 [10,"Main RoundMarkers","Camacha","camacha",11,18,20,80,172,1.5,0.502127659574468,32.679247975327044,-16.846253991418735,55,15,"foto",""],
 [11,"Main RoundMarkers","Ribeiro Frio","ribeirofrio",11,18,20,80,172,1.5,0.49142857142857144,32.73453736919167,-16.887325062396258,-90,5,"foto",""],
+
+[1,"Main Cartoons","Cabo Girao ViewPoint","cabogirao2",13,18,20,20,200,1.36,0.5537848605577689,32.65593272919328,-17.00440119116206,95,0,"foto",""],  
 [12,"Main Cartoons","Paul do Mar","paul_do_mar",11,18,20,96,172,1.5,0.5277777777777778,32.766798513781566,-17.236586289216916,-125,-175,"foto",""],
 [13,"Main Cartoons","Ponta de Sao Lourenco","lourenco",11,18,20,97,172,1.5,0.5470085470085471,32.74713195077348,-16.705123541563808,0,0,"foto","Museum"],
 [14,"Main Cartoons","Ponta do Pargo","pargo",11,18,20,93,172,1.5,0.37857142857142856,32.813456929446886,-17.263218385981645,-95,10,"foto",""],
@@ -645,6 +646,262 @@ var locations =[
 [28,"MainLocal References","CableCar Tower","torre1",13,18,12,23,200,1,0.5460122699386503,32.66665822973788,-16.896917567159562,0,0,"foto",""],
 [29,"MainLocal References","Cable Car Tower","torre1",13,18,12,20,200,1,0.5460122699386503,32.658281601186914,-16.898805842306047,0,0,"foto",""],
 [30,"MainLocal References","Christ the King","cristorei",13,18,56,50,200,1.4200000000000004,0.5,32.63896316661675,-16.85005401125136,0,0,"foto",""],
+
+ 
+[31,"MainLocal References","Maritimo Stadium","maritimo",13,18,15,86,200,1.4100000000000004,0.5,32.64494040057129,-16.927722008233786,95,45,"foto",""],
+[32,"MainLocal References","Botanical Garden","botanicalg",13,18,20,81,200,1.3600000000000003,0.6896551724137931,32.66258254183391,-16.89606079225348,-155,0,"foto",""],
+[33,"MainLocal References","S. Martinho Church","martinho2",13,18,20,74,200,1.5100000000000005,0.503448275862069,32.649184320580304,-16.944568276109635,30,-45,"foto",""],
+[34,"MainLocal References","Bananas Plantation","bananas2",13,18,20,94,200,1.8400000000000007,0.5,32.65448997109665,-16.944993868840356,-45,10,"foto",""],
+[35,"MainLocal References","Club Golf - Santo da Serra","golf",13,18,20,50,200,1,0.5,32.72227025705866,-16.803500577973296,0,0,"foto",""],
+[36,"MainLocal References","Palheiro Golf","golf",13,18,20,50,200,1,0.5,32.65355135302439,-16.87080840690919,0,0,"foto",""],
+[37,"MainLocal References","S. Vicente Caves","caves",13,18,20,50,200,1,0.6126760563380281,32.797847019855546,-17.04274936155275,0,0,"foto","Museum"],
+[38,"MainLocal References","Cablecar Botanic Garden","cablecar",13,18,20,50,200,1.3600000000000003,0.5,32.662986557686374,-16.896046555983958,-140,60,"foto",""],
+[39,"MainLocal References","Cablecar Rocha do Navio","cablecar",13,18,20,50,200,1.3600000000000003,0.5,32.8144757504747,-16.87699638782192,50,0,"foto",""],
+[40,"MainLocal Labels","Canico Village","canicolabel",13,18,50,67,300,1.1800000000000002,0.6299212598425197,32.65204801026365,-16.840920923980775,0,0,"foto",""],
+[41,"MainLocal Labels","Sao Pedro","saopedrolabel2",13,18,50,69,300,1.1800000000000002,0.8554216867469879,32.65014278714203,-16.91245197516764,150,-5,"foto",""],
+[42,"MainLocal Labels","Lido","lidolabel2",13,18,50,41,300,1,0.7175572519083969,32.63735494266544,-16.93732300177794,-5,0,"foto",""],
+[43,"MainLocal Labels","Funchal Center","centerlabel2",13,18,50,87,300,1.1800000000000002,0.8390243902439024,32.64773479455976,-16.90818877936681,10,-115,"foto",""],
+[44,"MainLocal Labels","Formosa Beach","formosalabel2",13,18,50,50,300,1.2700000000000002,0.8443396226415094,32.63947029912398,-16.951824787718806,60,-250,"foto",""],
+[45,"MainLocal Labels","Old Town","oldtownlabel2",13,18,50,58,300,1.3600000000000003,0.8458149779735683,32.64759589274104,-16.899006005301317,-75,10,"foto",""],
+[46,"MainLocal Labels","Terreiro da Luta","terreiroluta",13,18,50,50,300,1,0.3067484662576687,32.68466410110833,-16.899051468699554,0,0,"foto",""],
+[47,"MainLocal Labels","Aquapark - Santa Cruz","aquapark2",13,18,50,50,300,1,0.5674418604651162,32.68373006995051,-16.796919519232006,0,0,"foto",""],
+ 
+
+[69,"Local Buildings","Sao Lourenco Palace","lourencoPalace",15,18,15,36,200,2.439999999999998,0.5260115606936416,32.646916787872875,-16.910103533574215,0,0,"foto",""],
+[70,"Local Buildings","Town Hall ","townhall",15,18,15,34,200,2.020000000000001,0.48091603053435117,32.649632413630904,-16.90835237000556,0,0,"foto",""],
+[71,"Local Buildings","Wine Institut","wineinstitut",15,18,15,26,200,1.9600000000000009,0.4107142857142857,32.65105919627428,-16.90912417795073,0,0,"foto",""],
+[72,"Local Buildings","S. Tiago Forth - Museum of Contemporary Art","stiago",15,18,20,50,200,1.9600000000000009,0.6528497409326425,32.64646774786346,-16.898755626526054,0,0,"foto","Museum"],
+[73,"Local Buildings","Municipal Garden","municipalgarden",15,18,15,39,200,2.2599999999999993,0.5083798882681564,32.6473220116459,-16.911559696722406,0,0,"foto",""],
+[74,"Local Buildings","jesuit college","jesuitas",15,18,15,37,200,2.17,0.5357142857142857,32.64950693831175,-16.909310386125412,0,0,"foto",""],
+[75,"Local Buildings","Santa Catarina Park","catarina",15,18,15,112,496,2.0800000000000005,0.5531914893617021,32.64440256379201,-16.914299848113046,0,0,"foto",""],
+[76,"Local Buildings","Funchal Market","market1",15,18,15,33,200,1.9500000000000008,0.5136986301369864,32.648474951478654,-16.90381226534214,0,0,"foto",""],
+[77,"Local Buildings","Bay","boatslobos",15,18,20,74,337,2.0500000000000007,0.5173410404624278,32.6469873882595,-16.975011265014587,0,0,"foto",""],
+[78,"Local Buildings","Market","market1",15,18,20,50,200,1.3000000000000003,0.5136986301369864,32.64869335376384,-16.975272963110342,0,0,"foto",""],
+[79,"Local Buildings","S o Sebasti o Church","churchlobos",15,18,20,25,200,1.9600000000000004,0.5338345864661654,32.64869495686444,-16.9779331526031,0,0,"foto",""],
+[80,"Local Buildings","Santa Clara Monastery","S.Clara",15,18,20,37,200,1.7900000000000007,0.4158415841584158,32.65103117802171,-16.913253635775618,0,-80,"foto",""],
+[81,"Local Buildings","Government","Government",15,18,20,34,200,2.1599999999999997,0.48258706467661694,32.647963064869735,-16.90965296345223,-45,0,"foto",""],
+[82,"Local Buildings","Quinta das Cruzes Museum","museuCruzes",15,18,20,36,200,2.0100000000000002,0.5402843601895735,32.650979167229096,-16.913706899475073,50,-50,"foto","Museum"],
+[83,"Local Buildings","Museum of the Institute of Embroidery and Tapestry of Madeira","instituto_B_V",15,18,20,26,200,2.1999999999999997,0.502262443438914,32.650609819966974,-16.90323278317817,5,0,"foto","Museum"],
+[84,"Local Buildings","Henrique and Francisco Franco Museum","museuHenriques",15,18,20,27,200,2.09,0.6321243523316062,32.651363717829064,-16.904138972705027,0,0,"foto","Museum"],
+[85,"Local Buildings","Museological Nucleus of the City of Sugar","Museuacucar",15,18,20,20,200,1.7200000000000006,0.4406779661016949,32.648176380122095,-16.90704773275752,0,0,"foto","Museum"],
+[86,"Local Buildings","Casa da Luz Museum","museuLuz",15,18,20,27,200,2.319999999999999,0.5687830687830688,32.647110483607804,-16.904214761381922,0,0,"foto","Museum"],
+[87,"Local Buildings","Baltazar Dias Municipal Theatre","BaltazarDias",15,18,20,26,200,2.179999999999999,0.46825396825396826,32.64684842372694,-16.91155384390254,0,0,"foto","Museum"],
+[88,"Local Buildings","Goncalves Zarco Statue ","Estatua",15,18,20,20,200,1.6000000000000005,0.3595505617977528,32.64792298860014,-16.90983042797825,-30,0,"foto",""],
+[89,"Local Buildings","Socorro Church","socorrochurch",15,18,20,25,200,1.6500000000000006,0.44047619047619047,32.64698049617221,-16.897622979104085,50,0,"foto",""],
+[90,"Local Buildings","English Church","inglesa",15,18,20,26,206,1.6600000000000006,0.5,32.64951275889715,-16.914328752473807,-50,0,"foto",""],
+[91,"Local Buildings","Corpo Santo Chapel","CorpoSantoChapel",15,18,20,21,200,1.5400000000000005,0.5714285714285714,32.64757735273638,-16.89998676351263,-60,-20,"foto",""],
+[92,"Local Buildings","N  S  da Conceicao - Design Centre","molhe",15,18,20,50,200,2.3799999999999986,0.4961636828644501,32.64092501665999,-16.915016037345936,0,0,"foto","Museum"],
+[93,"Local Buildings","Monte sledges Arrival","CestosMonte",15,18,20,71,200,1.5100000000000005,0.5471698113207547,32.66427351621091,-16.90395135443123,0,0,"foto",""],
+[94,"Local Buildings"," Infant roundabout","InfanteRotunda",15,18,20,34,200,1.6700000000000006,0.5281385281385281,32.64642420191318,-16.913100650388742,0,-10,"foto",""],
+[95,"Local Buildings","Lido Swimming pool","lido",15,18,20,75,200,2.0500000000000007,0.6299212598425197,32.63523327214207,-16.93289439434477,0,0,"foto",""],
+[96,"Local Buildings","Ponta gorda Swimmin pool","gorda",15,18,20,41,217,1.6000000000000005,0.6787330316742082,32.634197912888894,-16.94046913258512,-5,0,"foto",""],
+[97,"Local Buildings","Quinta Magnolia Gardens","magnolia",15,18,20,74,212,2.0800000000000005,0.5,32.64328543255511,-16.92498254873385,0,0,"foto",""],
+[98,"Local Buildings","Funchal Marina","marinafunchal",15,18,20,74,200,1.8100000000000007,0.6388443017656501,32.645172446674536,-16.91031931584257,0,0,"foto",""],
+[99,"Local Buildings","Caves - Doca do Cavacas","caves",15,18,20,50,200,1,0.6126760563380281,32.6360091640023,-16.947708241433133,0,0,"foto",""],
+[100,"Local Buildings","Hospital","Health",15,18,20,20,200,1.7600000000000007,0.5,32.64630543017246,-16.9231081533527,0,-50,"foto",""],
+
+[101,"Local Buildings","Hospital","Health",15,18,20,22,200,1.7200000000000006,0.5,32.67198481341941,-16.908351788483742,0,0,"foto",""],
+[102,"Local Shop","Rua Fernao Ornelas","shop",16,18,12,12,200,1.9,0.5454545454545454,32.64914580241772,-16.905680623464605,0,-15,"foto",""],
+[103,"Local Shop","Rua Queimadas","shop",16,18,12,12,200,1.9,0.5454545454545454,32.64900650434345,-16.907690763692926,0,0,"foto",""],
+[104,"Local Catering","Old Town1","Cater",16,18,12,12,200,1.9,0.5,32.64783670907505,-16.901763391443524,0,0,"foto",""],
+[105,"Local Catering","Old Town","Cater",16,18,12,12,200,1.9,0.5,32.64731952800169,-16.89933331007603,0,0,"foto",""],
+[106,"Local Catering","Queimadas","Cater",16,18,12,12,200,1.9,0.5,32.6489934163719,-16.908455534403174,0,0,"foto",""],
+[107,"Local Catering","Rua da Carreira","Cater",16,18,12,12,200,1.9,0.5,32.64891367159491,-16.914608700799022,0,0,"foto",""],
+[108,"Local Catering","Rua D. Am?lia","Cater",16,18,12,12,200,1.9,0.5,32.64312960971838,-16.920301653158276,0,0,"foto",""],
+[109,"Local Catering","Rua do Carmo","Cater",16,18,12,12,200,1.9,0.5,32.6503032812445,-16.90624305921233,0,0,"foto",""],
+[110,"Local Catering","Lido1","Cater",16,18,12,12,200,1.9,0.5,32.637097932921804,-16.93121348926661,0,0,"foto",""],
+[111,"Local Catering","Lido2","Cater",16,18,12,12,200,1.9,0.5,32.63684795315647,-16.93407151541635,0,0,"foto",""],
+[112,"Local Catering","Lido3","Cater",16,18,12,12,200,1.9,0.5,32.63835223709321,-16.933974955891813,0,0,"foto",""],
+[113,"Local Catering","Lido 4","Cater",16,18,12,12,200,1.9,0.5,32.63828413414423,-16.932626790899803,0,0,"foto",""],
+[114,"Local Catering","Carreira2","Cater",16,18,12,12,200,1.9,0.5,32.64873309089031,-16.912260190698476,0,0,"foto",""],
+[115,"Local Catering","Catering area","Cater",16,18,12,12,200,1.9,0.5,32.634899598115304,-16.944006011002784,0,0,"foto",""],
+[116,"Local Catering","Catering Area","Cater",16,18,12,12,200,1.9,0.5,32.63518269449723,-16.947338287891853,0,0,"foto",""],
+[117,"Local Catering","Catering Area","Cater",16,18,12,12,200,1.9,0.5,32.63518269449723,-16.947338287891853,0,0,"foto",""],
+[118,"Local Catering","Catering Area","Cater",16,18,12,12,200,1.9,0.5,32.6398171399185,-16.927577678932607,0,0,"foto",""],
+[119,"Local Catering","Catering area","Cater",16,18,12,12,200,1.9,0.5,32.639053315032776,-16.930323891682065,0,0,"foto",""],
+[120,"Local Catering","Catering Area","Cater",16,18,12,12,200,1.9,0.5,32.64436238125508,-16.92017975271051,0,0,"foto",""],
+[121,"Local Catering","Catering Area","Cater",16,18,12,12,200,1.9,0.5,32.64636136925567,-16.910473328915145,0,0,"foto",""],
+[122,"PostOffice","Post Office C.L.","PostOffice",16,18,12,12,200,1.6,0.5,32.64916922053691,-16.977128489898632,0,0,"foto",""],
+[123,"PostOffice","Post Office - S. Ant nio","PostOffice",16,18,12,12,200,1.6,0.5,32.66021515853196,-16.950811106608853,0,0,"foto",""],
+[124,"PostOffice","Post Office - Av. Zarco","PostOffice",16,18,12,12,200,1.6,0.5,32.648411632762276,-16.91006465980081,0,0,"foto",""],
+[125,"PostOffice","Post Office - R. Bela S. Tiago","PostOffice",16,18,12,12,200,1.6,0.5,32.64890418861941,-16.902274993968604,0,0,"foto",""],
+[126,"Churchs","N. S. da Concei  o Chapel","Church",16,18,12,12,200,1.6,0.5087719298245614,32.647493477636765,-16.97598050444026,0,0,"foto",""],
+[127,"State","Town Hall","State",16,18,12,12,200,1.6,0.5531914893617021,32.648703990481664,-16.978265746520947,0,0,"foto",""],
+[128,"Library","Library","Library",16,18,12,12,200,1.6,0.5310344827586206,32.64916922053694,-16.978255017684887,0,0,"foto",""],
+[129,"Health","Health Centre C.L.","Health",16,18,12,12,200,1.6,0.5,32.649566696724996,-16.97518657057185,0,0,"foto",""],
+[130,"Culture","Cuture House C.L.","Culture",16,18,12,12,200,1.6,0.5,32.64887562903625,-16.97615216581721,0,0,"foto",""],
+[131,"Police","Police Station - Funchal","Police",16,18,12,12,200,1.6,0.5,32.65097591624622,-16.901865704940747,0,0,"foto",""],
+[132,"Court","Court","Court",16,18,12,12,200,1.6,0.5409836065573771,32.65037301838422,-16.908762057568765,0,0,"foto",""],
+[133,"Fireman","Fireman","Fireman",16,18,12,12,200,1.6,0.4827586206896552,32.65364975890234,-16.90149019567866,0,0,"foto",""],
+[134,"Fireman","Fireman","Fireman",16,18,12,12,200,1.6,0.4827586206896552,32.64814842132242,-16.917019693940574,0,0,"foto",""],
+[135,"Local Sponsors","Story Center","storycenter",15,18,20,30,200,1.55,0.4970344009489917,32.64786568382644,-16.902672477954297,0,0,"foto","Museum"],
+[136,"Local BarsA","OldTown 1","Bars",16,18,15,23,200,1.87,0.6,32.64783670907505,-16.901763391443524,0,0,"foto",""],
+[137,"Local BarsA","Old Town2","Bars",16,18,15,23,200,1.87,0.6,32.64767768628691,-16.900395345218612,0,0,"foto",""],
+[138,"Local BarsA","Largo das Fontes","Bars",16,18,15,23,200,1.87,0.6,32.64665361152184,-16.911011442121435,0,0,"foto",""],
+[139,"Local BarsA","Bars D. Am?lia","Bars",16,18,15,23,200,1.87,0.6,32.64322302554489,-16.921732665898276,0,0,"foto",""],
+[140,"Local BarsA","Hole in One","Bars",16,18,15,23,200,1.87,0.6,32.63924673818715,-16.92748885171443,0,0,"foto",""],
+[141,"Local BarsA","Bars Area C.L.","Bars",16,18,15,23,200,1.87,0.6,32.64808035397471,-16.975459046768265,0,0,"foto",""],
+[142,"Local BarsA","Bars Lido Area","Bars",16,18,15,23,200,1.87,0.6,32.636620581748744,-16.934412221910634,0,0,"foto",""],
+[143,"Local BarsA","Bars Lido Area","Bars",16,18,15,23,200,1.87,0.6,32.636620581748744,-16.934412221910634,0,0,"foto",""],
+[144,"Local BarsA","Bars Ajuda Area","Bars",16,18,15,23,200,1.87,0.6,32.63647718527401,-16.938338364466404,0,0,"foto",""],
+[145,"Local BarsA","Bars Area","Bars",16,18,15,23,200,1.87,0.6,32.71857768780312,-16.759757845494732,0,0,"foto",""],
+[146,"Local BarsA","Av. Arriaga Bars area","Bars",16,18,15,23,200,1.87,0.6,32.64732600499719,-16.91113013169729,0,0,"foto",""],
+[147,"Local BarsB","Bars CR7","Bars2",16,18,15,23,200,2.03,0.6,32.64286958808286,-16.91567981934361,0,0,"foto",""],
+[148,"Local BarsB","Bars area","Bars2",16,18,15,23,200,2.03,0.6,32.6401615515874,-16.929156938622555,0,0,"foto",""],
+[149,"Local BarsB","Bars Area","Bars2",16,18,15,23,200,2.03,0.6,32.647043199978285,-16.897194079529868,0,0,"foto",""],
+[150,"Disco","Vespas Disco","Disco",16,18,15,23,200,2.03,0.5,32.643555231694855,-16.91552702582237,0,0,"foto",""],
+
+[151,"Disco","Scat","Disco",16,18,15,23,200,2.03,0.5,32.64300866474243,-16.921890312032474,0,0,"foto",""],
+[152,"Disco","Vintage","Disco",16,18,15,23,200,2.03,0.5,32.648142628876585,-16.903595161543763,0,0,"foto",""],
+[153,"Local MuseumsA"," Museum of Sacred Art","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.64952797319975,-16.908401509895157,0,0,"foto",""],
+[154,"Local MuseumsA"," Frederico de Freitas Museum House","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.650212333523015,-16.912462374343704,0,0,"foto",""],
+[155,"Local MuseumsA","Whale museum","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.73549184942535,-16.74016579448744,0,0,"foto",""],
+[156,"Local MuseumsA"," Ethnographic Museum of Madeira","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.67287004990306,-17.06337057241751,0,0,"foto",""],
+[157,"Local MuseumsA"," Arts Center - Casa das Mudas","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.72316650462581,-17.18070600395174,0,0,"foto",""],
+[158,"Local MuseumsA","Casa Colombo Museum","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,33.05943807268682,-16.335579328058657,0,0,"foto",""],
+[159,"Local MuseumsA","Folk Art Museum","MuseumA",16,18,15,20,200,1.2,0.5116279069767442,32.656397316464584,-16.88774430197168,0,0,"foto",""],
+[160,"Local MuseumsB"," Museology Nucleus Mary Jane Wilson","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.65056770846564,-16.903752487290376,0,0,"foto",""],
+[161,"Local MuseumsB","Civic Center for Cultural Animation Edmundo Bettencourt","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.64867504317827,-16.902443400662833,0,0,"foto",""],
+[162,"Local MuseumsB"," Natural History Museum","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.649501615563274,-16.912356845181876,0,0,"foto",""],
+[163,"Local MuseumsB"," Museum of Photography Vicentes","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.64893627479366,-16.910257598533462,0,0,"foto",""],
+[164,"Local MuseumsB","J.C. Abreu Universo de Mem?rias","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.65127827597189,-16.913481613769363,0,0,"foto",""],
+[165,"Local MuseumsB"," Toy Museum","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.648453049019516,-16.902704497947525,0,0,"foto",""],
+[166,"Local MuseumsB","Press Museum C.L.","MuseumB",16,18,15,15,200,1.2,0.5116279069767442,32.648988548958265,-16.978351577209423,0,0,"foto",""],
+[167,"Main Walk","Caldeirao Verde Levada Walk","walkA",11,18,15,22,200,1.2,0.5,32.7837335585187,-16.906374649178588,-100,0,"foto","AllWalks"],
+[168,"Main Walk","25 Fountains Levada","walkA",11,18,15,22,200,1.2,0.5,32.765649763184406,-17.12936265376152,-5,-20,"foto","AllWalks"],
+[169,"Main Walk","Risco Levada","walkA",11,18,15,22,200,1.2,0.5,32.76187366329018,-17.130640969876822,50,-100,"foto","AllWalks"],
+[170,"Main Walk","Rabacal Levada","walkA",11,18,15,22,200,1.2,0.5,32.762036416009614,-17.137013898496207,135,0,"foto","AllWalks"],
+[171,"Main Walk","Achada do Teixeira to Pico Ruivo Walk","walkA",11,18,15,22,200,1.2,0.5,32.76499002789212,-16.92092403024685,-125,-50,"foto","AllWalks"],
+[172,"Main Walk","Balc es Levada Walk","walkA",11,18,15,22,200,1.2,0.5,32.73623360975641,-16.8883318293,115,-25,"foto","AllWalks"],
+[173,"Main Walk","S. Louren o Walk","walkA",11,18,15,22,200,1.2,0.5,32.74424979224127,-16.70081043399898,105,0,"foto","AllWalks"],
+[174,"Main Walk","Pico do Areeiro - Pico Ruivo Walk","walkA",11,18,15,22,200,1.2,0.5,32.73575851617383,-16.929593337192728,210,-65,"foto","AllWalks"],
+[175,"WaterfallA","Caldeirao Verde Waterfall","waterfall",15,18,15,45,200,1.2,0.4827586206896552,32.77108078487784,-16.943067241930066,0,0,"foto","AllWalks"],
+[176,"WaterfallA","Waterfall","waterfall",15,18,15,45,200,1.2,0.4827586206896552,32.686613044825,-17.113795528182663,0,0,"foto",""],
+[177,"WoodhouseA","WoodHouse Caldeirao Verde","woodHouse",15,18,15,45,200,1.2,0.5172413793103449,32.78364163641099,-16.9070262750854,75,-55,"foto","AllWalks"],
+[178,"ViewWalkA","Balc es ViewPoint","ViewPoint1",15,18,15,45,200,1.2,0.5,32.74142548149716,-16.890175806564457,0,0,"foto","AllWalks"],
+[179,"Lake","Lagoon Ribeira da Janela Walk","lake3",15,18,15,45,200,1.2,0.4827586206896552,32.788020808156936,-17.156174433880892,0,0,"foto","AllWalks"],
+[180,"Medium Walk","Tornos Walk","walkB",13,18,15,36,200,1.2,0.5,32.67761046122856,-16.897091372894238,-100,30,"foto","AllWalks"],
+[181,"Medium Walk","Portela Walk","walkB",13,18,15,36,200,1.2,0.5,32.7398341808717,-16.877678881130123,0,0,"foto","AllWalks"],
+[182,"Medium Walk","Moinho - Nova Walk Levada","walkB",13,18,15,36,200,1.2,0.5,32.68938452345196,-17.091575416092383,115,-35,"foto","AllWalks"],
+[183,"Medium Walk","King Levada Walk","walkB",13,18,15,36,200,1.2,0.5,32.8178118032336,-16.92662052506728,0,0,"foto","AllWalks"],
+[184,"Medium Walk","Ribeira da Janela Levada Walk","walkB",13,18,15,36,200,1.2,0.5,32.851200643303756,-17.16642407507186,0,0,"foto","AllWalks"],
+[185,"Medium Walk","Cedros Levada Walk","walkB",13,18,15,36,200,1.2,0.5,32.8255679966109,-17.156963038613753,0,0,"foto","AllWalks"],
+[186,"Medium Walk","Fanal Walk","walkB",13,18,15,36,200,1.2,0.5,32.767164715870194,-17.108114094350753,0,0,"foto","AllWalks"],
+[187,"Medium Walk","Tornos - Boaventura Levada Walk","walkB",13,18,15,36,200,1.2,0.5,32.78020672025502,-16.979657487395457,0,0,"foto","AllWalks"],
+[188,"Medium Walk","Caminho Real da Encomeada","walkB",13,18,15,36,200,1.2,0.5,32.753440212679536,-17.02027329742839,0,0,"foto","AllWalks"],
+[189,"Medium Walk","Marocos Levada Walk ","walkB",13,18,15,36,200,1.2,0.5,32.73523377032745,-16.80395642282224,0,0,"foto","AllWalks"],
+[190,"WaterfallB","Waterfall Ribeira da Janela Walk","waterfall",15,18,15,45,200,1.2,0.4827586206896552,32.82479382738842,-17.180448614408647,0,0,"foto","AllWalks"],
+[191,"WoodhouseB","Sardinha House","woodHouse",15,18,15,45,200,1.2,0.5172413793103449,32.74204154598509,-16.68353923286338,0,0,"foto","AllWalks"],
+[192,"WoodhouseB","Levadeiros House","woodHouse",15,18,15,45,200,1.2,0.5172413793103449,32.82430937662656,-17.175853813023764,0,0,"foto","AllWalks"],
+[193,"WoodhouseB","Boca da Corrida House","woodHouse",15,18,15,45,200,1.2,0.5172413793103449,32.71062533912417,-16.987121475430285,25,0,"foto","AllWalks"],
+[194,"ViewWalkB","Ponta do Furado","ViewPoint",15,18,15,45,200,1.2,0.5,32.73840472892698,-16.67954810584922,0,0,"foto","AllWalks"],
+[195,"Local Walk","Piornais Levada","walkB",15,18,15,36,200,1.2,0.5,32.6436893856601,-16.928537756028845,0,0,"foto","AllWalks"],
+[196,"Local Walk","North Levada  Walk","walkB",15,18,15,36,200,1.2,0.5,32.667756314307915,-17.005463092358923,0,0,"foto","AllWalks"],
+[197,"Local Walk","Larano Path Walk","walkB",15,18,15,36,200,1.2,0.5,32.73282680763309,-16.76460029882014,0,0,"foto","AllWalks"],
+[198,"Local Walk","Rodrigues Faja Walk","walkB",15,18,15,36,200,1.2,0.5,32.77993757075889,-17.048144239843737,0,0,"foto","AllWalks"],
+[199,"Local Walk","Cani al  to Boca do Risco Walk - Levada","walkB",15,18,15,36,200,1.2,0.5,32.733215377436466,-16.76222859029076,0,0,"foto","AllWalks"],
+[200,"Local Walk","Castelejo Levada Walk","walkB",15,18,15,36,200,1.2,0.5,32.75588920526692,-16.836405166089094,0,0,"foto","AllWalks"],
+
+[201,"DangerWalkC","Danger Piornais Walk","Danger2",15,18,15,45,200,1.2,0.5,32.65252097028621,-16.958863372384712,0,0,"foto","AllWalks"],
+[202,"DangerWalkC","Danger Bom Sucesso Walk","Danger2",15,18,15,45,200,1.2,0.5,32.6596364484525,-16.89909958087037,0,0,"foto","AllWalks"],
+[203,"DangerWalkC","Dangerous Sidewalk","Danger2",15,18,15,45,200,1.2,0.5,32.66247897601009,-17.03316877653458,0,0,"foto",""],
+[204,"Parks","Pico das Pedras - Park","Park_icon",13,18,15,46,200,1.2,0.5,32.77715031589501,-16.89707742494852,0,0,"foto","AllWalks"],
+[205,"Parks","Lamaceiros Park","Park_icon",13,18,15,46,200,1.2,0.5,32.85155498770923,-17.1664490063431,180,0,"foto",""],
+[206,"Parks","Chao da Ribeira Park","Park_icon",13,18,15,46,200,1.2,0.5,32.810080610976264,-17.114968521771743,0,0,"foto",""],
+[207,"Parks","Remedios Park","Park_icon",13,18,15,46,200,1.2,0.5,32.70553251826146,-16.799547924510534,0,0,"foto",""],
+[208,"Parks","Chao dos louros Park","Park_icon",13,18,15,46,200,1.2,0.5,32.76012003351023,-17.01592519498854,0,-35,"foto",""],
+[209,"Parks","Chao das Feiteiras Park","Park_icon",13,18,15,46,200,1.2,0.5,32.72143764365909,-16.886268929354515,0,0,"foto",""],
+[210,"Parks","Montado do Pereiro Park","Park_icon",13,18,15,46,200,1.2,0.5,32.702896950414804,-16.88753574565567,0,0,"foto",""],
+[211,"Main ViewPoint","Pico do Areeiro ViewPoint","ViewPoint1",11,18,15,24,200,1.2,0.5,32.735341089928795,-16.928492081974355,0,35,"foto",""],
+
+[213,"Main ViewPoint","Eira do Serrado","ViewPoint1",11,18,15,24,200,1.2,0.5,32.70946322683702,-16.963788313353803,0,0,"foto",""],
+[214,"Main ViewPoint","Pico dos Barcelos","ViewPoint1",11,18,15,24,200,1.2,0.5,32.65915966493357,-16.93998835174193,0,-45,"foto",""],
+[215,"Main ViewPoint","Encomeada","ViewPoint1",11,18,15,24,200,1.2,0.5,32.754315154520675,-17.019443874299668,0,0,"foto",""],
+[216,"Main ViewPoint","Portela","ViewPoint1",11,18,15,24,200,1.2,0.5,32.74701584812384,-16.82597843320491,0,0,"foto","AllWalks"],
+[217,"Main ViewPoint","Sao Sebastiao ","ViewPoint1",11,18,15,24,200,1.2,0.5,32.669487629503315,-17.062700288029987,0,-60,"foto",""],
+[218,"Main ViewPoint","Santa","ViewPoint1",11,18,15,24,200,1.2,0.5,32.862453354754564,-17.17307128345533,0,-65,"foto",""],
+[219,"Main ViewPoint","Pico do Facho","ViewPoint1",11,18,15,24,200,1.2,0.5,32.72401066159036,-16.75848881025877,0,0,"foto",""],
+[220,"Main ViewPoint","Achadas da Cruz","ViewPoint1",11,18,15,24,200,1.2,0.5,32.85246871615229,-17.21024380137385,0,0,"foto",""],
+[221,"Main ViewPoint","Ponta do Sol","ViewPoint1",11,18,15,24,200,1.2,0.5,32.67826230153394,-17.104326902771163,-40,0,"foto",""],
+[222,"Main ViewPoint","O Fio - ViewPoint","ViewPoint1",11,18,15,24,200,1.2,0.5,32.80915822462461,-17.256446413742083,0,70,"foto",""],
+[223,"Medium ViewPoint","Pico Alto","ViewPoint1",13,18,15,18,200,1.2,0.5,32.69301553191481,-16.902606765313294,0,0,"foto",""],
+[224,"Medium ViewPoint","Nazar?","ViewPoint1",13,18,15,18,200,1.2,0.5,32.64204752517668,-16.932726785547175,0,0,"foto",""],
+[225,"Medium ViewPoint","Rocha Navio","ViewPoint1",13,18,15,18,200,1.2,0.5,32.814479691217194,-16.876644912462893,0,0,"foto",""], 
+[226,"Medium ViewPoint","Fortim do Pico","ViewPoint1",13,18,15,18,200,1.2,0.5,32.77467829436613,-16.827689088255966,0,0,"foto",""],
+[227,"Medium ViewPoint","Queimada","ViewPoint1",13,18,15,18,200,1.2,0.5,32.715310640755696,-16.773245444519375,0,0,"foto",""],
+[228,"Medium ViewPoint","Pin?culo","ViewPoint1",13,18,15,18,200,1.2,0.5,32.646019260575734,-16.872541008400276,0,0,"foto",""],
+[229,"Medium ViewPoint","Bica da Cana","ViewPoint1",13,18,15,18,200,1.2,0.5,32.758255364274014,-17.05708203745769,0,0,"foto",""],
+[230,"Local ViewPoint","Sao Jose","ViewPoint1",13,18,15,18,200,1.2,0.5,32.77545954766435,-16.82647517871669,0,0,"foto",""],
+[231,"Main ViewPoint","Veu da Noiva","ViewPoint1",13,18,15,18,200,1.2,0.5,32.81613039935796,-17.095002259846638,0,0,"foto",""],
+[232,"Medium ViewPoint","Cabo Vigia","ViewPoint1",13,18,15,18,200,1.2,0.5,32.83443234318919,-16.911302917137164,0,0,"foto",""],
+[233,"Medium ViewPoint","Beira da Quinta - ViewPoint","ViewPoint1",13,18,15,18,200,1.2,0.5,32.82643754261981,-16.938994767680242,0,0,"foto",""],
+[234,"Medium ViewPoint","Pico da Torre","ViewPoint1",13,18,15,18,200,1.2,0.5,32.6520211609521,-16.973778764273902,0,0,"foto",""],
+[235,"Medium ViewPoint","Islet Point View","ViewPoint1",13,18,15,18,200,1.2,0.5,32.64832026659476,-16.977750762390087,0,0,"foto",""],
+[236,"Medium ViewPoint","Curtado ViewPoint","ViewPoint1",13,18,15,18,200,1.2,0.5,32.79066994437596,-16.859888888630394,0,0,"foto",""],
+[237,"Medium ViewPoint","Chao dos louros","ViewPoint1",13,18,15,18,200,1.2,0.5,32.76170050897424,-17.015598779537072,0,0,"foto",""],
+[238,"Medium ViewPoint","Boca da Corrida Viewpoint","ViewPoint1",13,18,15,18,200,1.2,0.5,32.71111421340685,-16.986620660610924,0,0,"foto","AllWalks"],
+[239,"Local ViewPoint","Marmeleiros","ViewPoint2",16,18,15,18,200,1.2,0.5,32.66917711757763,-16.909155367174435,0,0,"foto",""],
+[240,"Local ViewPoint","Cruzes","ViewPoint2",16,18,15,18,200,1.2,0.5,32.65057791443865,-16.913761196541145,0,0,"foto",""],
+[241,"Local ViewPoint","Conde Carvalhal","ViewPoint2",16,18,15,18,200,1.2,0.5,32.64962822601249,-16.895503300889686,0,0,"foto",""],
+[242,"Local ViewPoint","S?o Roque","ViewPoint2",16,18,15,18,200,1.2,0.5,32.6684024329944,-16.92333390162821,0,0,"foto",""],
+[243,"Local ViewPoint","Campan?rio","ViewPoint2",16,18,15,18,200,1.2,0.5,32.66816142891076,-17.03360319974047,0,0,"foto",""],
+[244,"Local ViewPoint","Cardais","ViewPoint2",16,18,15,18,200,1.2,0.5,32.80396653966123,-17.043835715905175,0,0,"foto",""],
+[245,"Local ViewPoint","Faj? dos Padres","ViewPoint2",16,18,15,18,200,1.2,0.5,32.65678947644511,-17.021697747465396,0,0,"foto",""],
+[246,"Local ViewPoint","Farol Verde","ViewPoint2",16,18,15,18,200,1.2,0.5,32.70785109455003,-17.14044864579114,0,0,"foto",""],
+[247,"Local ViewPoint","Cam?es Pequeno","ViewPoint2",16,18,15,18,200,1.2,0.5,32.71098145057967,-16.77245338722787,0,0,"foto",""],
+[248,"Local ViewPoint","Guindaste","ViewPoint2",16,18,15,18,200,1.2,0.5,32.794056587155794,-16.849336473385392,0,0,"foto",""],
+[249,"Local ViewPoint","Senhor dos Milagres","ViewPoint2",16,18,15,18,200,1.2,0.5,32.72060349340606,-16.762108908189475,0,0,"foto",""],
+[250,"Local ViewPoint","Trigo Negro","ViewPoint2",16,18,15,18,200,1.2,0.5,32.70595042169472,-17.139847417065653,0,0,"foto",""],
+[252,"Local ViewPoint","Cabe?a Rosto","ViewPoint2",16,18,15,18,200,1.2,0.5,32.80618615522445,-16.910026910319402,0,0,"foto",""],
+[253,"Local ViewPoint","Choupana","ViewPoint2",16,18,15,18,200,1.2,0.5,32.663179490566925,-16.880476871759583,0,0,"foto",""],
+[254,"Local ViewPoint","Curral Romeiros","ViewPoint2",16,18,15,18,200,1.2,0.5,32.6800732286206,-16.89077851795878,0,0,"foto",""],
+[255,"Local ViewPoint","Tabaiba - ViewPoint","ViewPoint2",16,18,15,18,200,1.2,0.5,32.66443436340059,-16.900393013703706,0,0,"foto",""],
+[256,"Local ViewPoint","Palheiro Ferreiro","ViewPoint2",16,18,15,18,200,1.2,0.5,32.660035944115435,-16.87490114752063,0,0,"foto",""],
+[257,"Local ViewPoint","Achada","ViewPoint2",16,18,15,18,200,1.2,0.5,32.65733971060028,-16.91939363065967,0,0,"foto",""],
+[258,"Local ViewPoint","Cascalho","ViewPoint2",16,18,15,18,200,1.2,0.5,32.682663069936225,-17.092337902919894,0,0,"foto",""],
+[259,"Local ViewPoint","Eira Achada","ViewPoint2",16,18,15,18,200,1.2,0.5,32.848189070744496,-17.15277806253357,0,0,"foto",""],
+[260,"Local ViewPoint","Eiras","ViewPoint2",16,18,15,18,200,1.2,0.5,32.81203062292482,-16.912967381062913,0,0,"foto",""],
+[261,"Local ViewPoint","Espig?o","ViewPoint2",16,18,15,18,200,1.2,0.5,32.70526271321826,-17.03068874774158,0,0,"foto",""],
+[262,"Local ViewPoint","Bot?nico","ViewPoint2",16,18,15,18,200,1.2,0.5,32.663220528056335,-16.895603885385754,0,0,"foto",""],
+[263,"Local ViewPoint","Padre Pita","ViewPoint2",16,18,15,18,200,1.2,0.5,32.64910506325147,-16.883170886855055,0,0,"foto",""],
+[264,"Local ViewPoint","Neves","ViewPoint2",16,18,15,18,200,1.2,0.5,32.64566772141282,-16.87027482591145,0,0,"foto",""],
+[265,"Local ViewPoint","Pedra Mole","ViewPoint2",16,18,15,18,200,1.2,0.5,32.86342595270696,-17.17589911431992,0,0,"foto",""],
+[266,"Local ViewPoint","Pedra Atalaia","ViewPoint2",16,18,15,18,200,1.2,0.5,32.65032373021496,-16.817976971473627,0,0,"foto",""],
+[267,"Local ViewPoint","Piarro","ViewPoint2",16,18,15,18,200,1.2,0.5,32.718673981972465,-17.17012485274563,0,0,"foto",""],
+[268,"Local ViewPoint","Pico S?o Jorge","ViewPoint2",16,18,15,18,200,1.2,0.5,32.82251004999323,-16.902386109251438,0,0,"foto",""],
+[269,"Local ViewPoint","Pico Pol?cia","ViewPoint2",16,18,15,18,200,1.2,0.5,32.68027194125545,-17.105423531619067,0,0,"foto",""],
+[270,"Local ViewPoint","Pico Ter?as","ViewPoint2",16,18,15,18,200,1.2,0.5,32.685337866792864,-17.10160406598186,0,0,"foto",""],
+[271,"Local ViewPoint","Ros?rio","ViewPoint2",16,18,15,18,200,1.2,0.5,32.67882814361446,-16.799326495920127,0,0,"foto",""],
+[272,"Local ViewPoint","Socorro ViewPoint","ViewPoint2",16,18,15,18,200,1.2,0.5,32.64668454149571,-16.897642504136,0,0,"foto",""],
+[273,"Main Beach","Formosa Beach","Beach",11,18,15,32,200,1.22,0.5050505050505051,32.63950214257843,-16.95191074083766,80,-40,"foto",""],
+[274,"Main Beach","Calheta Beach","Beach",11,18,15,32,200,1.22,0.5050505050505051,32.71949990449691,-17.17533254061766,0,0,"foto",""],
+[275,"Main Beach","Machico Beach","Beach",11,18,15,32,200,1.22,0.5050505050505051,32.71832275363708,-16.7619840873939,-85,-40,"foto",""],
+[276,"Medium Beach","Prainha Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.74263529529403,-16.715852772756307,0,0,"foto",""],
+[277,"Medium Beach","Doca do Cavacas Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.635012469271736,-16.948155846809186,0,0,"foto",""],
+[278,"Medium Beach","Ponta Gorda Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.634185762982135,-16.94078408248356,0,0,"foto",""],
+[279,"Medium Beach","Lido Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.635382903491504,-16.932479963373453,0,0,"foto",""],
+[280,"Medium Beach","Ribeira Brava Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.671033821315234,-17.06676691245775,0,0,"foto",""],
+[281,"Medium Beach","Pa?l do Mar Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.752411765923384,-17.22496397850091,0,0,"foto",""],
+[282,"Medium Beach","Garajau Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.63827213717423,-16.85289414092358,0,0,"foto",""],
+[283,"Medium Beach","Salinas Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.646338357590295,-16.973303463678576,0,0,"foto",""],
+[284,"Medium Beach","Calhau da Lapa Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.66179963046122,-17.03743840917491,0,0,"foto",""],
+[285,"Medium Beach","Faj? dos Padres Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.654794812284635,-17.022632615412704,0,0,"foto",""],
+[286,"Medium Beach","Anjos Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.679151885689016,-17.10543991866564,65,0,"foto",""],
+[287,"Medium Beach","Madalena do Mar Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.69295030703672,-17.12553668801604,0,0,"foto",""],
+[288,"Medium Beach","Porto Moniz Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.867878287098186,-17.168532498802847,0,0,"foto",""],
+[289,"Medium Beach","Seixal Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.82280723765115,-17.102831817985134,0,0,"foto",""],
+[290,"Medium Beach","Lage Beach (Seixal)","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.82685983139144,-17.114086367011623,0,0,"foto",""],
+[291,"Medium Beach","Ponta Delgada Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.82770467501772,-16.98425022567585,0,0,"foto",""],
+[292,"Medium Beach","Ribeira do Faial Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.792873720143696,-16.848951527282225,0,0,"foto",""],
+[293,"Medium Beach","Ribeira de Natal Beach Complex","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.73610254773562,-16.738769716632646,0,0,"foto",""],
+[294,"Medium Beach","Alagoa Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.77435090169142,-16.828751023302175,0,0,"foto",""],
+[295,"Medium Beach","Reis Magos Beach","Beach",13,18,15,22,200,1.3,0.5050505050505051,32.64709380133583,-16.824169559979623,0,0,"foto",""],
+[296,"Local Beach","Barreirinha Beach Complex","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.64649410115773,-16.897439135063223,0,0,"foto",""],
+[297,"Local Beach","Sao Tiago Beach","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.64644215656238,-16.898951900947623,0,0,"foto",""],
+[298,"Local Beach","Gorgulho Beach","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.63625946027811,-16.9344923605953,0,0,"foto",""],
+[299,"Local Beach","Vig?rio Beach ","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.64849341340056,-16.97921732533723,0,0,"foto",""],
+[300,"Local Beach","Porto da Cruz Beach Complex","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.773611184641375,-16.827248986253835,0,0,"foto",""],
+[301,"Local Beach","Palmeiras Beach","Beach",16,18,15,44,200,1.2,0.5050505050505051,32.68643283604833,-16.79159578898475,0,0,"foto",""],
 
 ]//Finish 
  
@@ -704,10 +961,26 @@ var arr = new Array(); // dotted Line
 polygons = []; // dotted Line
 var pedestrian = []; // dotted line
 
-
+blob:https://github.com/b13d7e62-8217-45c3-8ab2-df084c93be11
 
 var filter;
- 
+layers["Zoom_out"] = new google.maps.KmlLayer("https://rquaresma22.github.io/MarketPlace/kmz/2.kml_Zoom_out_area_funchal.kmz",// funchal areas on Zoom out >9
+   { suppressInfoWindows: true,  zIndex: 1, preserveViewport: true,  clickable:false  });
+
+layers["Walksoff"] = new google.maps.KmlLayer("https://rquaresma22.github.io/MarketPlace/kmz/2_WalksOff.kmz", // Only show main walks at Zoom >13
+   { suppressInfoWindows: true, zIndex: 1,  preserveViewport: true,  clickable:false});
+
+layers["Zoom_in"] = new google.maps.KmlLayer("https://rquaresma22.github.io/MarketPlace/kmz/1_Zoom_in5.kmz", // All Zoom >15 
+   { suppressInfoWindows: true, zIndex: 1,  preserveViewport: true,  clickable:false});
+
+
+
+layers["YelowBus"] = new google.maps.KmlLayer("https://rquaresma22.github.io/MarketPlace/kmz/YelowBus.kmz",  // yelowBus   
+   { suppressInfoWindows: true, zIndex: 2,  preserveViewport: true,  clickable:false  });
+
+layers["AllWalks"] = new google.maps.KmlLayer("https://rquaresma22.github.io/MarketPlace/kmz/Allwalks6.kmz",  // Walks on (all)
+   {  suppressInfoWindows: true,  zIndex: 2,  preserveViewport: true,  clickable:false  });
+
 
 
  
@@ -758,17 +1031,15 @@ function initialize() {
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++ Starting
 function  start() {
- 
                     map_style(); 
                     load_locations();
                     addOption_list();
                     layerkmlAreas(); 
                     dotted_line();
-                    document.getElementById('All').click(); // click show all markers 
+                    document.getElementById('All').click(); // click show all markers
                     document.getElementById('zoom_in').click(); // zoom 11 buttom click
-
 }
- 
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++ Dotted Lines
 function  dotted_line() {
