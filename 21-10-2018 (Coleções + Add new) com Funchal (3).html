@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple icons</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      } 
+#zoom_controls{
+        position: absolute; 
+        top: 80%;  
+        z-index: 0;
+        background-color: none;
+        padding: 4px;
+        border: none;
+        height: 40px;
+        width: 100%; 
+        text-align: center;   
+        }
+
+#controls{
+        position: absolute; 
+        top: 1px;
+        right: 10px;
+        margin-left: -320px;
+        z-index: 0;
+        background-color: #fff;
+        padding: 4px;
+        border: 1px solid #999;
+        height: 50px;
+        }
+
+
+ #Control_left {
+        position: absolute;
+        top: 1px;
+        left: 0px;
+        margin-left: 0px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 4px;
+        border: 1px solid #999;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
+        }
+.dropdown-submenu {position: relative;}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;}
+
+
+ #panel {
+        position: absolute;
+        top: 1%;
+        right: 0.4%;
+        width:269px; 
+        height: auto;
+        z-index: 5;
+        background-color: #fff;
+        padding: 7px; 
+        border: 1px solid #999;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
+        text-align: right;  
+        }
+
+#form {
+        position: fixed;
+        left: 30%;
+        top: 10px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #999;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.15); 
+   }
+ #save {
+        position: absolute;
+        bottom: 1px;
+        left: 30px;
+        margin-left: 3px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 4px;
+        border: 1px solid #999;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
+        }
+ 
+
+    </style>
+<!-- Add google maps library-->
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-hlhzdBuah5qcARmXL6K_3fjWfX9p-2o&callback=initMap"></script>
+
+        <script type="text/javascript" src="http://geoxml3.googlecode.com/svn/branches/polys/geoxml3.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD-hlhzdBuah5qcARmXL6K_3fjWfX9p-2o&libraries=geometry"></script>
+  
+ <!-- Add dropdown menu library -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Add fancybox jQuery library  -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="/js/web.js"></script>
+        <script src="http://fancyapps.com/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script> 
+        <link rel="stylesheet" href="http://fancyapps.com/fancybox/source/jquery.fancybox.css?v=2.1.5"> </script>
+
+       <script type="text/javascript" src="https://cdn.rawgit.com/geocodezip/geoxml3/master/polys/geoxml3.js"></script>
+
+<!-- Add Markers  -->
+        <script src="https://rquaresma22.github.io/MarketPlace/dotted_line.html"></script>
+ 
+  <script>
+
+   
+   var coordinates = {
+      "lobos": [
+        [-16.974521,32.647689],[-16.974421,32.647589],[-16.974362,32.647492],[-16.974341,32.64744],[-16.974338,32.647384],[-16.974349,32.647325],[-16.97436,32.64725],[-16.97436,32.647208],[-16.974346,32.647155],[-16.974314,32.64709],[-16.974274,32.647034],[-16.974252,32.647004],[-16.97422,32.646964],[-16.974164,32.646887],[-16.974118,32.646814],[-16.974067,32.646774],[-16.974024,32.646763],[-16.97399,32.646767],[-16.973949,32.646774],[-16.973909,32.646797],[-16.973869,32.646812],[-16.973818,32.646814],[-16.973767,32.646821],[-16.973689,32.646821],[-16.973585,32.646812],[-16.973531,32.646806],[-16.973488,32.646792],[-16.97344,32.646754],[-16.973397,32.646715],[-16.973357,32.646679],[-16.973316,32.646641],[-16.973284,32.646602],[-16.973233,32.646544],[-16.973185,32.646476],[-16.973131,32.646403],[-16.973062,32.646322],[-16.973019,32.646264],[-16.97296,32.646173],[-16.972863,32.646042],[-16.972761,32.645934],[-16.972707,32.645852],[-16.972595,32.645726],[-16.972488,32.645609],[-16.972407,32.645505],[-16.972268,32.645369],[-16.97216,32.645288],[-16.971999,32.645175],[-16.971935,32.645125],[-16.971822,32.645048],[-16.971667,32.645008],[-16.971543,32.645008],[-16.971393,32.644999],[-16.97127,32.645003],[-16.971028,32.645003],[-16.970792,32.645017],[-16.970621,32.645003],[-16.970481,32.645003],[-16.97032,32.645012],[-16.970175,32.645053],[-16.970036,32.645098],[-16.969913,32.645157]
+      ],
+      "formosa": [
+        [-16.969516,32.645288],[-16.969489,32.645179],[-16.969478,32.645089],[-16.969451,32.645003],[-16.969403,32.644922],[-16.969355,32.644836],[-16.969296,32.644786],[-16.969167,32.64471],[-16.969065,32.644633],[-16.968979,32.644538],[-16.968545,32.644421],[-16.968137,32.644303],[-16.967697,32.644145],[-16.967359,32.64405],[-16.967091,32.643964],[-16.966715,32.643833],[-16.965959,32.643562],[-16.965814,32.643517],[-16.965626,32.643495],[-16.965428,32.643531],[-16.965278,32.643531],[-16.965128,32.643504],[-16.964937,32.643425],[-16.964709,32.643332],[-16.964398,32.643341],[-16.964242,32.643393],[-16.964119,32.643445],[-16.963878,32.643553],[-16.963652,32.643576],[-16.963153,32.643553],[-16.962778,32.643504],[-16.962193,32.643323],[-16.961877,32.643273],[-16.961517,32.643273],[-16.961158,32.643287],[-16.960957,32.643373],[-16.960745,32.64344],[-16.960487,32.643485],[-16.960246,32.643474],[-16.959983,32.643413],[-16.959656,32.643336],[-16.959473,32.643287],[-16.959211,32.643165],[-16.958969,32.643061],[-16.958792,32.64293],[-16.958578,32.642799],[-16.958454,32.642745],[-16.9581,32.642609],[-16.958047,32.642605],[-16.957886,32.642682],[-16.95781,32.642627],[-16.957843,32.642474],[-16.957735,32.64242],[-16.95758,32.642483],[-16.957424,32.642514],[-16.957231,32.642537],[-16.956893,32.642469],[-16.956738,32.64242],[-16.956539,32.642406],[-16.956367,32.642388],[-16.956078,32.642429],[-16.955852,32.642447],[-16.9556,32.642433],[-16.955362,32.642377],[-16.955092,32.642204],[-16.954871,32.642117],[-16.952784,32.640658],
+      ],
+       "lido": [
+        [-16.949812,32.638426],[-16.947516,32.636692],[-16.947473,32.636583],[-16.947441,32.636448],[-16.947463,32.636294],[-16.947495,32.63615],[-16.947495,32.636014],[-16.947516,32.635915],[-16.947559,32.635815],[-16.947623,32.635689],[-16.947677,32.635598],[-16.947688,32.635454],[-16.947688,32.635318],[-16.947688,32.635183],[-16.947634,32.635056],[-16.94757,32.63493],[-16.947484,32.634821],[-16.947387,32.634776],[-16.947312,32.634731],[-16.947205,32.634677],[-16.947098,32.634605],[-16.947012,32.634523],[-16.94699,32.634424],[-16.946905,32.634315],[-16.946851,32.634198],[-16.946744,32.634108],[-16.946615,32.634017],[-16.946475,32.633945],[-16.946325,32.633846],[-16.946197,32.633755],[-16.946078,32.633665],[-16.945939,32.633584],[-16.945789,32.633484],[-16.945574,32.633394],[-16.945338,32.633349],[-16.945113,32.633349],[-16.944973,32.633367],[-16.944802,32.633538],[-16.944684,32.633692],[-16.944523,32.633728],[-16.944373,32.633791],[-16.944201,32.633837],[-16.944019,32.633846],[-16.943825,32.633873],[-16.943675,32.633882],[-16.943557,32.633891],[-16.943332,32.633927],[-16.943139,32.633954],[-16.942989,32.634017],[-16.942806,32.634053],[-16.942613,32.634117],[-16.942431,32.634198],[-16.94227,32.634243],[-16.94213,32.634288],[-16.94198,32.634343],[-16.941808,32.63437],[-16.94168,32.634406],[-16.941476,32.634442],[-16.941326,32.634451],[-16.941165,32.634478],[-16.940993,32.634505],[-16.940843,32.634532],[-16.940714,32.634541],[-16.940553,32.63455],[-16.940371,32.634568],[-16.940263,32.634568],[-16.940124,32.634568],[-16.939995,32.634568],[-16.939802,32.634596],[-16.939673,32.634623],[-16.939609,32.634722],[-16.939652,32.63483],[-16.939748,32.634957],[-16.939802,32.635074],[-16.939824,32.635174],[-16.939716,32.635201],[-16.939577,32.635291],[-16.939502,32.635373],[-16.939502,32.63549],[-16.93948,32.635626],[-16.939427,32.635743],[-16.939341,32.635869],[-16.939287,32.635996],[-16.939191,32.636095],[-16.939115,32.636213],[-16.939019,32.636249],[-16.938879,32.636258],[-16.938783,32.636294],[-16.938633,32.636294],[-16.938461,32.636285],[-16.938214,32.63633],[-16.938021,32.636366],[-16.937785,32.636421],[-16.937571,32.636484],[-16.937367,32.636538],[-16.937163,32.636565],[-16.936991,32.636637],[-16.936755,32.63671],[-16.936594,32.636764],[-16.936433,32.636818],[-16.93624,32.636854],[-16.936101,32.636881],[-16.935961,32.636899],[-16.935768,32.636917],[-16.935564,32.636954],[-16.935425,32.636981],[-16.935307,32.637008],[-16.935157,32.637035],[-16.935049,32.63708],[-16.934942,32.637098],[-16.934845,32.637044],[-16.934738,32.636972],[-16.934631,32.636881],[-16.934502,32.6368],[-16.934341,32.636791],[-16.934223,32.636737],[-16.934202,32.636646],[-16.934073,32.636574],[-16.933955,32.636565],[-16.933848,32.636601],[-16.933815,32.636701],[-16.933633,32.636683],[-16.933365,32.636628],[-16.93314,32.636583],[-16.932925,32.636565],[-16.932678,32.636502],[-16.932539,32.636475],[-16.932528,32.636375],[-16.932517,32.636195],[-16.932507,32.636104],[-16.932421,32.636041],[-16.932281,32.636068],[-16.932099,32.636113],[-16.931906,32.63614],[-16.931745,32.636168],[-16.931605,32.636159],[-16.931434,32.636168]
+      ],
+       "S. Pedro Funchal": [
+[-16.9097849,32.6480221],    [-16.9100862,32.6491254],    [-16.9109329,32.6489164],    [-16.9112875,32.6488298],    [-16.9116944,32.6487805],    [-16.912789,32.6487719],    [-16.9129606,32.6487822],    [-16.9134971,32.6487809],    [-16.9152996,32.6490565],    [-16.9157663,32.6491287],    [-16.9161203,32.6492236],    [-16.9163147,32.6492552],    [-16.916587,32.6493139],    [-16.9165937,32.6495623],    [-16.9165012,32.6496798],    [-16.9163362,32.6497249],    [-16.9158789,32.6498424],    [-16.9155624,32.6499056],    [-16.9147912,32.6502443],    [-16.9144479,32.6505018],    [-16.9141623,32.6505018],    [-16.9138833,32.6505786],    [-16.9137492,32.6507051],    [-16.9133858,32.6510348],    [-16.9131699,32.6509309],    [-16.912903,32.650827],    [-16.9127635,32.6507276],    [-16.9125811,32.6505018],    [-16.9123343,32.6502579],    [-16.912109,32.6498423],    [-16.9119374,32.6495984],    [-16.9116142,32.6498514],    [-16.9108752,32.6503256],    [-16.9109074,32.6503753],    [-16.9108323,32.6504928],    [-16.9101081,32.6510303],    [-16.9098118,32.6507548],    [-16.9093665,32.6503166],    [-16.9090627,32.6500862],    [-16.9086209,32.6498379],    [-16.9080441,32.6495025],    [-16.9076123,32.6491513],    [-16.9074956,32.649052],     
+   ],
+       "S ": [
+   [-16.9087777,32.6480885],    [-16.9086986,32.6478866],    [-16.9079154,32.6480402],    [-16.9077545,32.6480944],    [-16.9071859,32.6481757],    [-16.9069177,32.6481938],    [-16.9068747,32.6477511],    [-16.9064456,32.647733],    [-16.906113,32.6477782],    [-16.9060057,32.6478008],    [-16.9056838,32.6479318],    [-16.9052118,32.6480492],    [-16.9049006,32.6479227],    
+   ],
+
+      "Carmo - funchal": [
+[-16.9065194,32.6495894],    [-16.9063049,32.6496978],    [-16.9064872,32.6498243],    [-16.9065731,32.6499327],    [-16.9066911,32.6501405],    [-16.9067555,32.6503934],    [-16.9068306,32.6506644],    [-16.9069379,32.6509083],    [-16.9071202,32.6511161],    [-16.9066696,32.6512606],    [-16.9062727,32.6513871],    [-16.9060044,32.6514684],    [-16.9057362,32.6515407],    [-16.9052749,32.6514774],    [-16.9049423,32.6514232],    [-16.9045131,32.6513961],    [-16.9037407,32.6513419],    [-16.903172,32.6512787],    [-16.9027214,32.6511884],    [-16.902641,32.6511387],    [-16.9023781,32.6510212],    [-16.9027429,32.6506825],    [-16.9030004,32.6503934],    [-16.9028502,32.650267],    [-16.9025712,32.6500592],    [-16.9023888,32.6499056],    [-16.9023674,32.6497972],    [-16.9023674,32.6496346],    [-16.9023781,32.649481],    [-16.9023137,32.6493455],    [-16.9022064,32.6493004],    [-16.9021099,32.6487674],    [-16.9019489,32.6487132],    [-16.9020026,32.6485416],    [-16.9020884,32.6483428],    [-16.9021635,32.6482254],  
+     ],
+ 
+      "Descida cestos": [
+[-16.9025366,32.6754292],    [-16.9029228,32.6753659],    [-16.9032554,32.6753117],    [-16.9036094,32.6749686],    [-16.9037489,32.6746796],    [-16.903824,32.6742642],    [-16.9037704,32.6740203],    [-16.9038347,32.6737223],    [-16.9040386,32.6732798],    [-16.9042317,32.6728734],    [-16.9048754,32.6717625],    [-16.9046823,32.6716722],    [-16.9044892,32.6715729],    [-16.9044677,32.6710581],    [-16.9043605,32.6706336],    [-16.904221,32.6695047],    [-16.9038133,32.6679151],    [-16.9040708,32.6669397],    [-16.9040493,32.6662352],    [-16.9041137,32.6659281],    [-16.9043605,32.6654585],    [-16.9044248,32.6650159],    [-16.9046716,32.6642211],    
+     ],
+
+      "Descida cestos": [
+[-17.0300864,32.6645348],    [-17.0301347,32.6644468],    [-17.0302768,32.6644671],    [-17.0303707,32.6644987],    [-17.0304351,32.6645145],    [-17.0305316,32.6644265],    [-17.0306201,32.6643226],    [-17.0307221,32.6642165],    [-17.0308803,32.6640855],    [-17.0309983,32.6639613],    [-17.0311083,32.6638529],    [-17.0313443,32.6636949],    [-17.0315562,32.6635978],    [-17.0323904,32.6630852],    [-17.0327149,32.6628346],    [-17.032782,32.6628187],    [-17.0328437,32.6627465],    [-17.0328893,32.6626855],    [-17.0332031,32.6624981],    [-17.0333667,32.6624868],    [-17.0335438,32.6624146],    [-17.0340775,32.6623965],    [-17.0341794,32.6624439],    [-17.0342519,32.6623987],    [-17.0347829,32.6622949],    [-17.0350082,32.6622565],    [-17.035137,32.6622881],    [-17.0352684,32.6623333],    [-17.0353408,32.6624462],    [-17.0354293,32.6625387],    [-17.035534,32.6625794],    [-17.0356493,32.6625771],    [-17.0356868,32.6624846],    [-17.0356654,32.6624146],    [-17.0357351,32.6624055],    [-17.035778,32.6624078],    [-17.0357619,32.6623558],    [-17.035837,32.6623378],    [-17.0361401,32.6623784],    [-17.0363467,32.6623897],    [-17.0365344,32.6623694],    [-17.0366283,32.6623604],    [-17.0366819,32.6624349],    [-17.0367088,32.6625049],    [-17.0366739,32.6625658],    [-17.0366766,32.6626065],    [-17.0367892,32.6625817],    [-17.0368724,32.6625094],    [-17.036926,32.662462],    [-17.0369716,32.6624281],    [-17.0370789,32.6623287],    [-17.0371942,32.6622046],    
+     ],
+     };
+ 
+
+
+var menuItems = {
+
+  "menu-1": {
+          "id": "menu-1",
+          "title": "Main Level",
+          "parentId":  null,
+          "childCount": 1,
+          }, 
+          "menu-10": {
+                   "id": "menu-10",
+                   "title": "FixTop",  
+                   "parentId": "menu-1",
+                   "childCount":0,
+                   "groupCat":"Main Cartoons", 
+           },
+          "menu-11": {
+                   "id": "menu-11",
+                   "title": "Main Cartoons",  
+                   "parentId": "menu-1",
+                   "childCount":0,
+                   "groupCat":"Main Cartoons", 
+           },
+           "menu-12": {
+                   "id": "menu-12",
+                   "title": "Main Cities",  
+                   "parentId":"menu-1",
+                   "childCount": 0,
+                   "groupCat":"Main Cartoons", 
+           }, 
+           "menu-13": {
+                   "id": "menu-13",
+                   "title": "Main RoundMarkers", 
+                   "parentId": "menu-1",
+                   "childCount":0
+           },
+           "menu-14": {
+                   "id": "menu-14",
+                   "title": "Main Sponsors", 
+                   "parentId": "menu-1",
+                   "childCount":0
+           },
+           "menu-15": {
+                   "id": "menu-15",
+                   "title": "Cablecar", 
+                   "parentId": "menu-1",
+                   "childCount":0
+           },
+ 
+  "menu-2": {
+           "id": "menu-2",
+           "title": "Medium Level",
+           "parentId":  null,
+           "childCount": 1
+           },  
+           "menu-21": {
+                   "id": "menu-21",
+                   "title": "MainLocal References", 
+                   "parentId":"menu-2",
+                   "childCount": 0
+           },
+           "menu-22": {
+                   "id": "menu-22",
+                   "title": "MainLocal Labels", 
+                   "parentId":"menu-2",
+                   "childCount": 0
+           },
+          "menu-23": {
+                   "id": "menu-23",
+                   "title": "MainLocal Sponsors", 
+                   "parentId": "menu-2",
+                   "childCount": 0
+          },
+  "menu-3": {
+          "id": "menu-3",
+          "title": "Local Level",
+          "parentId":  null,
+          "childCount": 1
+          },  
+           "menu-31": {
+                   "id": "menu-31",
+                   "title": "Local Buildings", 
+                   "parentId": "menu-3",
+                   "childCount": 0
+           }, 
+           "menu-32": {
+                   "id": "menu-32",
+                   "title": "Local Shop",  
+                   "parentId": "menu-3",
+                   "childCount": 0
+          }, 
+           "menu-33": {
+                   "id": "menu-33",
+                   "title": "Local Catering", 
+                   "parentId": "menu-3",
+                   "childCount": 0
+          },
+           "menu-35": {
+                   "id": "menu-35",
+                   "title": "Local Sponsors",  
+                   "parentId":"menu-3",
+                   "childCount": 0
+           },  
+           "menu-34": {
+                   "id": "menu-34",
+                   "title": "Local Icons",
+                   "parentId": "menu-3",
+                   "childCount": 1
+                   },
+                   "menu-341": {
+                            "id": "menu-341",
+                            "title": "PostOffice", 
+                            "iconimage":"PostOffice",
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },
+                   "menu-342": {
+                            "id": "menu-342",
+                            "title": "Churchs", 
+                            "iconimage":"Church", 
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },
+                   "menu-343": {
+                            "id": "menu-343",
+                            "title": "Cross", 
+                            "iconimage":"cross",  
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },
+                   "menu-344": {
+                            "id": "menu-344",
+                            "title": "State", 
+                            "iconimage":"State", 
+                            "parentId": "menu-34",
+                            "childCount": 0 
+                   },
+
+                   "menu-345": {
+                            "id": "menu-345",
+                            "title": "Library",  
+                            "iconimage":"Library", 
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },
+                   "menu-346": {
+                            "id": "menu-346",
+                            "title": "Health", 
+                            "iconimage":"Health", 
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },
+                   "menu-347": {
+                            "id": "menu-347",
+                            "title": "SuperMarket", 
+                            "iconimage":"Supermarket", 
+                            "parentId": "menu-34",
+                            "childCount": 0
+                   },  
+                   "menu-348": {
+                            "id": "menu-348",
+                            "title": "Culture", 
+                            "iconimage":"Culture", 
+                            "parentId": "menu-34",
+                            "childCount": 0 
+                   },
+                   "menu-349": {
+                            "id": "menu-349",
+                            "title": "Police", 
+                            "iconimage":"Police", 
+                            "parentId": "menu-34",
+                            "childCount": 0 
+                   },
+                   "menu-3411": {
+                            "id": "menu-3411",
+                            "title": "Court", 
+                            "iconimage":"Court", 
+                            "parentId": "menu-34",
+                            "childCount": 0 
+                   },
+
+                   "menu-3412": {
+                            "id": "menu-3412",
+                            "title": "Fireman", 
+                            "iconimage":"Fireman", 
+                            "parentId": "menu-34",
+                            "childCount": 0 
+                   },
+  // transversal selectores
+  "menu-4": {
+          "id": "menu-4",
+          "title": "Bars",
+          "parentId":  null,
+          "childCount": 1
+          },
+           "menu-41": {
+                   "id": "menu-41",
+                   "title": "Local BarsA", 
+                   "parentId": "menu-4",
+                   "childCount": 0
+                 },
+          "menu-42": {
+                    "id": "menu-42",
+                    "title": "Local BarsB", 
+                    "parentId": "menu-4",
+                    "childCount": 0
+                 },
+          "menu-43": {
+                    "id": "menu-43",
+                    "title": "Disco", 
+                    "parentId": "menu-4",
+                    "childCount": 0
+                 },  
+  "menu-5": {
+          "id": "menu-5",
+          "title": "Museums",
+          "parentId":  null,
+          "childCount": 1
+          },
+          "menu-51": {
+                  "id": "menu-51",
+                  "title": "Local MuseumsA", 
+                  "parentId": "menu-5",
+                  "childCount": 0
+                  },
+          "menu-52": {
+                  "id": "menu-53",
+                  "title": "Local MuseumsB", 
+                  "parentId": "menu-5",
+                  "childCount": 0
+                      }, 
+  "menu-6": {
+            "id": "menu-6",
+            "title": "Walks",
+            "parentId":  null,
+            "childCount": 1
+            },
+            "menu-61": {
+                     "id": "menu-61",
+                     "title": "Main Walk",
+                     "parentId": "menu-6",
+                     "childCount": 1
+                     },
+                     "menu-612": {
+                               "id": "menu-612",
+                               "title": "Main Walk",   
+                               "parentId": "menu-61",
+                               "childCount": 0
+                     },
+                     "menu-613": {
+                               "id": "menu-613",
+                               "title": "WaterfallA", 
+                               "parentId": "menu-61",
+                               "childCount": 0
+                     },
+                    "menu-614": {
+                               "id": "menu-614",
+                               "title": "WoodhouseA",   
+                               "parentId": "menu-61",
+                               "childCount": 0
+                     }, 
+                     "menu-615": {
+                               "id": "menu-615",
+                               "title": "ViewWalkA", 
+                               "parentId": "menu-61",
+                               "childCount": 0
+                       },
+                      "menu-616": {
+                              "id": "menu-616",
+                              "title": "DangerWalkA", 
+                              "parentId": "menu-61",
+                              "childCount": 0
+                       },
+                      "menu-617": {
+                              "id": "menu-617",
+                              "title": "Lake", 
+                              "parentId": "menu-61",
+                              "childCount": 0
+                       },
+            "menu-62": {
+                     "id": "menu-62",
+                     "title": "Medium Walk", 
+                     "parentId": "menu-6",
+                     "childCount": 1
+                     }, 
+                      "menu-621": {
+                              "id": "menu-621",
+                              "title": "Medium Walk", 
+                              "parentId": "menu-62",
+                              "childCount": 0
+                       },
+                       "menu-622": {
+                              "id": "menu-622",
+                              "title": "WaterfallB", 
+                              "parentId": "menu-62",
+                              "childCount": 0
+                       },
+                       "menu-623": {
+                                 "id": "menu-623",
+                                 "title": "WoodhouseB",  
+                                 "parentId": "menu-62",
+                                 "childCount": 0
+                       },
+                       "menu-624": {
+                                 "id": "menu-624",
+                                 "title": "ViewWalkB",  
+                                 "parentId": "menu-62",
+                                 "childCount": 0
+                       },
+                       "menu-625": {
+                                 "id": "menu-625",
+                                 "title": "DangerWalkB",  
+                                 "parentId": "menu-62",
+                                 "childCount": 0
+                       },
+            "menu-63": {
+                     "id": "menu-63",
+                     "title": "Local Walk", 
+                     "parentId": "menu-6",
+                     "childCount": 1
+                     }, 
+                       "menu-631": {
+                                 "id": "menu-632",
+                                 "title": "Local Walk",  
+                                 "parentId": "menu-63",
+                                 "childCount": 0
+                       },
+                       "menu-632": {
+                                 "id": "menu-631",
+                                 "title": "DangerWalkC",  
+                                 "parentId": "menu-63",
+                                 "childCount": 0
+                       },
+            "menu-64": {
+                     "id": "menu-64",
+                     "title": "Parks", 
+                     "parentId": "menu-6",
+                     "childCount": 0
+                     }, 
+  "menu-7": {
+            "id": "menu-7",
+            "title": "ViewPoint",
+            "parentId":  null,
+            "childCount": 1
+            },
+            "menu-71": {
+                     "id": "menu-71",
+                     "title": "Main ViewPoint",
+                     "parentId": "menu-7",
+                     "childCount": 0
+                     },
+            "menu-72": {
+                     "id": "menu-72",
+                     "title": "Medium ViewPoint",
+                     "parentId": "menu-7",
+                     "childCount": 0
+                     }, 
+            "menu-73": {
+                     "id": "menu-73",
+                     "title": "Local ViewPoint",
+                     "parentId": "menu-7",
+                     "childCount": 0
+                     }, 
+  "menu-8": {
+            "id": "menu-8",
+            "title": "Beachs",
+            "parentId":  null,
+            "childCount": 1
+            }, 
+            "menu-81": {
+                     "id": "menu-81",
+                     "title": "Main Beach", 
+                     "parentId": "menu-8",
+                     "childCount": 0
+            },
+            "menu-82": {
+                     "id": "menu-82",
+                     "title": "Medium Beach",  
+                     "parentId": "menu-8",
+                     "childCount": 0
+            },
+            "menu-83": {
+                     "id": "menu-83",
+                     "title": "Local Beach",  
+                     "parentId": "menu-8",
+                     "childCount": 0
+            },
+            "menu-84": {
+                     "id": "menu-84",
+                     "title": "Swiming",  
+                     "parentId": "menu-8",
+                     "childCount": 0
+            },  
+      };
+
+var CategoryData =[   
+         ["FixTop",7,"Sponsors",9,18,10,75,120,0.99,"costum"],
+         ["Main Cities",6,"Fancybox",11,18,20,113,172,1.5,"costum"],
+         ["Main RoundMarkers",6,"Fancybox",11,18,20,80,172,1.5,"costum"],
+         ["Main Cartoons",6,"Fancybox",11,18,20,"costum",172,1.5,"costum"],
+         ["Main Sponsors",7,"Sponsors",9,18,10,50,200,1.2,"costum"], 
+         ["Cablecar",7,"Sponsors",11,18,10,50,200,1.4,"Cablecar"], 
+
+         ["MainLocal References", 5, "Fancybox", 13,18, "costum", "costum", 200,  "costum", "costum" ],
+         ["MainLocal Labels", 7, "Infowindow", 13,18, 50, "costum", 300,  "costum", "costum" ],
+         ["MainLocal Sponsors", 6, "Sponsors", 13,18, 10, 40, 200, 1.3, "costum" ],
+ 
+         ["Local Buildings", 4, "Fancybox", 15,18, "costum", "costum", "costum", "costum", "costum" ],
+         ["Local Shop", 4, "Fancybox", 16,18, 12,12, 200, 1.9, "Shop" ], 
+         ["Local Catering", 4, "Infowindow", 16,18, 12, 12, 200, 1.9, "Cater" ],
+                ["PostOffice", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "PostOffice" ], 
+                ["Churchs", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Church" ], 
+                ["Cross", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Cross" ], 
+                ["State", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "State" ], 
+                ["Library", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Library" ], 
+                ["Health", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Health" ], 
+                ["SuperMarket", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "SuperMarket" ], 
+                ["Culture", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Culture" ], 
+                ["Police", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Police" ], 
+                ["Court", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Court" ], 
+                ["Fireman", 5, "Infowindow", 16,18, 12, 12, 200, 1.6, "Fireman" ],
+
+         ["Local Sponsors", 4, "Sponsors", 15,18, 20, 30, 200, 1.55, "costum" ],
+
+         // transversais selectores
+
+         ["Local BarsA", 5, "Fancybox", 16,18, 15, 23, 200, 1.87, "Bars" ],
+         ["Local BarsB", 5, "Fancybox", 16,18, 15, 23, 200, 2.03, "Bars2" ],
+         ["Disco", 5, "Fancybox", 16,18, 15, 23, 200, 2.03, "Disco" ],
+
+         ["Local MuseumsA", 5, "Fancybox", 16,18, 15, 20, 200, 1.2, "MuseumA" ],
+         ["Local MuseumsB", 5, "Infowindow", 16,18, 15, 15, 200, 1.2, "MuseumB" ],  
+
+         ["Main Walk", 6, "Fancybox", 11,18, 15, 22, 200, 1.2, "walkA","A", ], 
+            ["WaterfallA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "waterfall","B" ],
+            ["WoodhouseA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "WoodHouse","B" ],
+            ["ViewWalkA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "ViewPoint1","B" ],
+            ["DangerWalkA", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger","B" ], 
+            ["Lake", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Lake3","B" ], 
+         ["Medium Walk", 5, "Infowindow", 13,18, 15, 36, 200, 1.2, "WalkB","A" ], 
+            ["WaterfallB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Waterfall","B" ], 
+            ["WoodhouseB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "WoodHouse","B" ],
+            ["ViewWalkB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "ViewPoint","B" ], 
+            ["DangerWalkB", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger","B" ], 
+         ["Local Walk", 6, "Infowindow", 15,18, 15, 36, 200, 1.2, "WalkB","A"  ],
+            ["DangerWalkC", 4, "Fancybox", 15,18, 15, 45, 200, 1.2, "Danger2","B" ], 
+
+         ["Parks", 5, "Infowindow", 13,18, 15, 46, 200, 1.2, "Park_icon","A" ], 
+
+
+         ["Main ViewPoint", 4, "Fancybox", 11,18, 15,24,200,1.2, "ViewPoint1" ],
+         ["Medium ViewPoint", 4, "Infowindow", 13,18, 15, 18, 200, 1.2, "ViewPoint1" ],
+         ["Local ViewPoint", 4, "Infowindow", 16,18, 15, 18, 200, 1.2, "ViewPoint2" ],
+
+         ["Main Beach", 5, "Fancybox", 11,18, 15, 32, 200, 1.22, "Beach" ],
+         ["Medium Beach", 5, "Infowindow", 13,18, 15, 22, 200, 1.3, "Beach" ], 
+         ["Local Beach", 5, "Infowindow", 16,18, 15, 44, 200, 1.2, "Beach" ], 
+         ["Swiming", 5, "Infowindow", 16,18, 15, 15, 200, 1.2, "Beach" ],  
+
+  ];   
+
+
+var locations =[
+// ordem,Cat,Title,Icon, 
+[1,"FixTop","Funchal","teste",9,18,10,75,120,0.99,0.5,32.64786928132301,-16.910195048238393,-15,0,"foto","Fix"],
+[2,"Main Cities","Machico Village","machico",11,18,20,113,172,1.5,0.4940652818991098,32.71885050273968,-16.765634789597243,15,10,"foto",""],
+
+[3,"Main Cities","Santana","santana",11,18,20,113,172,1.5,0.4939759036144578,32.805515466469686,-16.882140807215137,0,0,"foto",""],
+[4,"Main Cities","Porto Moniz","Moniz",11,18,20,113,172,1.5,0.4936708860759494,32.86858754964275,-17.17090462624992,0,0,"foto",""],
+[5,"Main Cities","Camara de Lobos","lobos",11,18,20,113,172,1.5,0.49382716049382713,32.649293875007395,-16.975825588766156,0,-5,"foto",""],
+[6,"Main Cities","Ribeira Brava","brava",11,18,20,113,172,1.5,0.49382716049382713,32.67168667602144,-17.066134302734213,0,15,"foto",""],
+[7,"Main Cities","S?o Vicente","vicente",11,18,20,113,172,1.5,0.4945054945054945,32.802830386768875,-17.04508493749995,0,20,"foto",""],
+[8,"Main RoundMarkers","Curral das Freiras","curral3",11,18,20,80,172,1.5,0.49382716049382713,32.720517812077105,-16.965860259415876,30,25,"foto",""],
+[9,"Main RoundMarkers","Fanal","fanal",11,18,20,80,172,1.5,0.49795918367346936,32.8177926422609,-17.15054801766962,60,-35,"foto",""],
+[10,"Main RoundMarkers","Camacha","camacha",11,18,20,80,172,1.5,0.502127659574468,32.679247975327044,-16.846253991418735,55,15,"foto",""],
+[11,"Main RoundMarkers","Ribeiro Frio","ribeirofrio",11,18,20,80,172,1.5,0.49142857142857144,32.73453736919167,-16.887325062396258,-90,5,"foto",""],
+[12,"Main Cartoons","Paul do Mar","paul_do_mar",11,18,20,96,172,1.5,0.5277777777777778,32.766798513781566,-17.236586289216916,-125,-175,"foto",""],
+[13,"Main Cartoons","Ponta de Sao Lourenco","lourenco",11,18,20,97,172,1.5,0.5470085470085471,32.74713195077348,-16.705123541563808,0,0,"foto","Museum"],
+[14,"Main Cartoons","Ponta do Pargo","pargo",11,18,20,93,172,1.5,0.37857142857142856,32.813456929446886,-17.263218385981645,-95,10,"foto",""],
+[15,"Main Cartoons","Aeroport","aeroporto",11,18,20,93,172,1.5,0.6388888888888888,32.69443577856026,-16.774321422996195,-35,-30,"foto",""],
+ [16,"Main Cartoons","Pico do Areeiro","mountain3",11,18,20,110,172,1.5,0.75625,32.73541527451247,-16.928559260553925,-5,-75,"foto","Fix"],
+[17,"Main Cartoons","picoruivo","picoruivo3",11,18,20,50,172,1.5,0.6305418719211823,32.758995339217144,-16.943118079589794,15,-100,"foto","Fix"],
+[18,"Main Cartoons","Cablecar Achadas da Cruz","cablecar",11,18,20,50,172,1.5,0.5,32.8528687161523,-17.210893801373686,-50,35,"foto",""],
+[19,"Main Cartoons","Faja dos Padres Cablecar","cablecar",11,18,20,50,172,1.5,0.5,32.65675709719952,-17.02134166155338,0,0,"foto",""],
+[20,"Main Cartoons","Cablecar - Faja  Gabo Girao","cablecar",11,18,20,50,172,1.5,0.5,32.65237455590898,-16.992653678373017,0,0,"foto",""],
+[21,"Main Cartoons","Cablecar Garajau","cablecar",11,18,20,50,172,1.5,0.5,32.639972280921405,-16.851372904861137,90,0,"foto",""],
+[22,"Main Sponsors","Ferry to Porto Santo","lobomarinho",9,18,10,50,200,1.2,0.631578947368421,32.64464409979765,-16.90771273261055,-190,-145,"foto",""],
+[23,"MainLocal References","Ponta do Sol Village","ponta_sollabel",13,18,20,102,200,1.1500000000000001,0.7208672086720868,32.680678668534796,-17.103490082949293,0,45,"foto",""],
+[24,"MainLocal References","vineyards","grapes",13,18,20,68,200,1.4200000000000004,0.5213675213675214,32.67499783806816,-16.986515510655636,0,0,"foto",""],
+[25,"MainLocal References","Monte","CestosMonte",13,18,69,88,200,1.19,0.51010101010101,32.6756326219501,-16.902571496921496,5,-35,"foto",""],
+[26,"MainLocal References","Pico Fort","forte",13,18,56,104,200,1.2000000000000002,0.5,32.65040705937372,-16.91565946723233,95,20,"foto",""],
+[27,"MainLocal References","cable car tower","torre1",13,18,23,43,200,1,0.5460122699386503,32.67545550574613,-16.89680747194552,0,0,"foto",""],
+[28,"MainLocal References","CableCar Tower","torre1",13,18,12,23,200,1,0.5460122699386503,32.66665822973788,-16.896917567159562,0,0,"foto",""],
+[29,"MainLocal References","Cable Car Tower","torre1",13,18,12,20,200,1,0.5460122699386503,32.658281601186914,-16.898805842306047,0,0,"foto",""],
+[30,"MainLocal References","Christ the King","cristorei",13,18,56,50,200,1.4200000000000004,0.5,32.63896316661675,-16.85005401125136,0,0,"foto",""],
+
+]//Finish 
+ 
+
+// wigth labels <= 11
+var myStyles1=[
+     {"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{ "color": "#c0c0c0"},{"visibility": "simplified"}]},
+     {"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"on"}]},
+     {"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+     {"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},
+];
+
+// normal labels >= 13
+var myStyles2=[
+     {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"on"},{"weight":1}]},
+     {"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"on"}]},
+     {"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+     {"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},
+];
+  
+// off labels <= 11
+var myStyles3=[
+     {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"off"},{"weight":1}]},
+     {"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+     {"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},
+     {"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},
+];
+
+
+
+var marker, i;
+group = [];
+group2 = []; 
+var markers = [];
+var widthy;
+var id;
+var lastmarker= []; 
+var position;
+var infowindow = new google.maps.InfoWindow();
+var imageform;
+var zoomlevel;
+var Button_clicked; // indicate the button click id
+var l; // indicates category on popup form
+var manager;
+var cat; // indicates the category selected for popup 
+var layers = [];
+var arr = new Array(); // dotted Line
+polygons = []; // dotted Line
+var pedestrian = []; // dotted line
+
+
+
+var filter;
+ 
+
+
+ 
+  
+ 
+
+function initialize() {
+                   var mapOptions = {
+                                    zoom: 11,
+                                    center: new google.maps.LatLng(32.654535, -16.913249), 
+                                    mapTypeId: google.maps.MapTypeId.roadmap, 
+                                    maxZoom: 17,
+                                    minZoom: 9,
+                                    zoomControl: false,
+                                    streetViewControl: false,
+                    };
+
+                    map = new google.maps.Map(document.getElementById('map-canvas'),
+                                mapOptions);
+ 
+ 
+                   
+  
+                    // ++++++++++++ Listener: MAPA Click - Open Form +++++++++++++++++++++
+                    google.maps.event.addListener(map, 'click', function(event) {
+                                    
+                                     position = event.latLng; 
+                                     infowindow.close();
+                                     
+                                      if (document.getElementById("panel").style.display != "block")
+                                             { document.getElementById("form").style.display='block';};
+  
+                    });  
+
+                    // ++++++++++++ Listener: zoom  +++++++++++++++++++++
+                    google.maps.event.addListener(map,'zoom_changed', function() {   
+                      
+                                    manager(); 
+                                    infData(); layerkmlAreas(); map_style(); dotted_line_manager(); 
+                    });
+
+                    start();
+
+} // end initialize
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ Starting
+function  start() {
+ 
+                    map_style(); 
+                    load_locations();
+                    addOption_list();
+                    layerkmlAreas(); 
+                    dotted_line();
+                    document.getElementById('All').click(); // click show all markers 
+                    document.getElementById('zoom_in').click(); // zoom 11 buttom click
+
+}
+ 
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ Dotted Lines
+function  dotted_line() {
+    for (var i in coordinates) {
+          arr = [];
+
+          for (var j = 0; j < coordinates[i].length; j++) { 
+                    arr.push(new google.maps.LatLng(
+                    parseFloat(coordinates[i][j][1]),
+                    parseFloat(coordinates[i][j][0])
+          ));  
+     }
+
+     // Construct the polygon.
+     var lineSymbol = {
+            path: 'M 0,-1 0,0',
+            strokeOpacity: 1,
+            scale: 1,
+            strokeWeight:2,
+     };
+    var polygons = new google.maps.Polyline({
+            path: arr,
+            strokeOpacity: 0,
+            strokeColor: "#4169E1",
+            icons: [{
+                   icon: lineSymbol,
+                   offset: '0',
+                   repeat: '7px',
+            }], 
+     });
+     polygons.setMap(map);
+  
+     pedestrian.push(polygons);
+   }
+dotted_line_manager();
+}
+
+function  dotted_line_manager() { 
+    if (map.getZoom() <= 13){
+        for (i = 0; i < pedestrian.length; i++) { 
+                  pedestrian[i].setVisible(false); 
+        }  // end for
+     }else{
+        for (i = 0; i < pedestrian.length; i++) { 
+                  pedestrian[i].setVisible(true); 
+        }  // end for
+     }
+}
+ 
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ Style Map 
+function  map_style() {
+       if (map.getZoom() <= 8){ map.setOptions({styles: myStyles1}); } 
+       else { map.setOptions({styles: myStyles2});} 
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ Button: goolgle maps
+function  clear_map() {
+        
+var myStyles0=[
+     {"featureType":"administrative.locality","elementType":"labels","stylers":[{"visibility":"on"},{"weight":1}]},
+     {"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"on"}]},
+     {"featureType":"poi","elementType":"all","stylers":[{"visibility":"on"}]},
+     {"featureType":"road.highway","elementType":"labels.icon","stylers":[{"visibility":"on"}]}, 
+     {"featureType":"transit","elementType":"labels","stylers":[{"visibility":"on"}]},
+     {"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"}]},
+     {"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"on"}]},
+];
+    map.setOptions({styles: myStyles0});
+ 
+    for (var i = 0; i < group.length; i++ ) { 
+               group[i].setMap(null);
+    } 
+ 
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ KML 
+function  layerkmlAreas() { 
+
+   if (map.getZoom() < 9) { 
+           layers["Zoom_in"].setMap(null);   
+           layers["Zoom_out"].setMap(null);
+           layers["Walksoff"].setMap(null); 
+   }
+  
+    if (map.getZoom() >= 9 && map.getZoom() <= 12) { 
+           layers["Zoom_in"].setMap(null);            
+           layers["Walksoff"].setMap(null); 
+           layers["Zoom_out"].setMap(map);
+    } 
+
+    if (map.getZoom() >= 13 && map.getZoom() <= 14) {
+           layers["Zoom_in"].setMap(null); 
+           layers["Walksoff"].setMap(map); 
+           layers["Zoom_out"].setMap(map);
+    }  
+    if (map.getZoom() >= 15) {
+           layers["Zoom_in"].setMap(map); 
+           layers["Walksoff"].setMap(map);  
+           layers["Zoom_out"].setMap(null);
+    }  
+}
+
+
+//end function layerkmlAreas
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ LOAD  LOCATION ARRAY   
+function load_locations() { 
+
+       for(var x = 0; x < CategoryData.length; x++){
+            for(var y = 0; y < locations.length; y++){
+                if(CategoryData[x][0] === locations[y][1]){
+
+                         if(CategoryData[x][9] !== "costum"){
+                                  image = CategoryData[x][9]
+                        }  else  {  image = locations[y][3] }    
+ 
+  
+                         title = locations[y][2];  
+
+                         ratio = locations[y][10];
+                         position = new google.maps.LatLng(locations[y][11], locations[y][12]);
+                         anchorX = locations[y][13];
+                         anchorY = locations[y][14];
+                         foto = locations[y][15];   
+
+                         category = CategoryData[x][0];
+                         subcategory = locations[y][16];
+                         sub_subcategory = CategoryData[x][10]; 
+
+                         zIndex = CategoryData[x][1]; 
+                         onClick = CategoryData[x][2]; 
+                         minvisible = CategoryData[x][3];
+                         maxvisible = CategoryData[x][4];
+
+                         if(CategoryData[x][5] !== "costum"){
+                                minwidth = CategoryData[x][5]*ratio;  
+                                minheight = CategoryData[x][5]-minwidth;  }else{ minwidth = locations[y][6]*ratio;
+                                                                                 minheight = locations[y][6]-minwidth};
+
+                         if(CategoryData[x][6] !== "costum"){ 
+                                width = CategoryData[x][6]*ratio;
+                                height = CategoryData[x][6]-width;  }else{ width = locations[y][7]*ratio;
+                                                                           height = locations[y][7]-width};
+
+                         if(CategoryData[x][7] !== "costum"){   
+                                maxwidth = CategoryData[x][7]*ratio;
+                                maxheight = CategoryData[x][7]-maxwidth; }else{ maxwidth = locations[y][8]*ratio;
+                                                                                maxheight = locations[y][8]-maxwidth}; 
+
+                         if(CategoryData[x][8] !== "costum"){  
+                                power = CategoryData[x][8]; }else{  power = locations[y][9]};  
+
+
+                                iconimage = new google.maps.MarkerImage('https://rquaresma22.github.io/MarketPlace/Icon/'+ image +'.png');
+ 
+                   map_markers(); 
+
+               }// end if           
+              }// end loop  multiple markers from "Location" var
+            }// end loop  multiple markers from "Categorys" var   
+selector(markers);
+ 
+}// end  load_locations 
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ Add MARKERS ON MAP
+function map_markers(){ 
+
+                          var markers = new google.maps.Marker({
+                                        position: position,  
+                                        icon: iconimage,
+                                        image: image, 
+                                        minwidth: minwidth, 
+                                        minheight: minheight,  
+                                        width: width,
+                                        widthF: width,
+                                        height: height,   
+                                        maxwidth:  maxwidth, 
+                                        maxheight: maxheight, 
+                                        power:  power,   
+                                        minvisible: minvisible, 
+                                        minvisibleF: minvisible, 
+                                        maxvisible:  maxvisible, 
+                                        anchorX: anchorX,
+                                        anchorY: anchorY,
+                                        title: title, 
+                                        onClick: onClick, 
+                                        foto: foto, 
+                                        category:category,  
+                                        subcategory:subcategory, 
+                                        subsubcategory: sub_subcategory,
+                                        zIndex: zIndex,
+                                        ratio: ratio,
+                                        map: map,
+                                });   
+
+                          group.push(markers);   
+
+                         app_listeners(markers);
+                          // listeners(markers);
+
+  
+}// end markers 
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ MARKERS Listeners
+function listeners(markers){
+                      // *** Listener dblClick Marker: open infowindow +++++++++++++++++++++++++++++++++++++++
+                            google.maps.event.addListener(markers, 'click', (function(markers, i) {
+                                            return function() {
+                                                        lastzoom = map.getZoom();
+                                                        if (lastzoom < 17){ 
+                                                                     map.setZoom(lastzoom+2);  }                                                                  
+                                                        else {
+ 
+                                                                     infowindow.close()
+                                                                     if(markers.onClick === "Infowindow"){ 
+                                                                                           infowindow.setContent(markers.getTitle());
+                                                                                           infowindow.open(map, markers);} // end if infowindow
+ 
+                                                                     if(markers.onClick ==="Fancybox"){   
+                                                                                           infowindow.close(); 
+                                                                                           adress = 'https://rquaresma22.github.io/MarketPlace/Fotos/'+ markers.foto+"/"+markers.foto; 
+                                                                                           var img1 = adress+"1"+".JPG";  
+                                                                                           var img2 = adress+"2"+".JPG";
+                                                                                           var img3 = adress+"3"+".JPG";
+                                                                                           var img4 = adress+"4"+".JPG"; 
+                                                                                           $.fancybox([{
+                                                                                                     href: img1},{
+                                                                                                     href: img2},{
+                                                                                                     href: img3},{
+                                                                                                     href: img4}], {
+                                                                                                     // API other options
+                                                                                                     padding: 0 // optional
+                                                                                           }); // fancybox  
+
+                                                                     }// end if fancybox
+
+                                                         } // end else < 17zoom
+                                                                        
+                                                         map.panTo(markers.getPosition()); 
+
+                                                          }// end return
+                            })(markers, i)); // end listener    
+
+}; 
+
+function app_listeners(markers){
+                         //*** Listener Marker Click: Push Marker to Array ++++++++++++++++++++++++++++++++++++ 
+                              google.maps.event.addListener(markers, 'click', (function(markers, i) { 
+                                                        
+                                                        return function() { 
+                                                                      $('#select').text('Select:'); 
+                                                                      lastmarker = []
+                                                                      lastmarker.push(markers);
+
+                                                                      var  manager ="individual"; // for left panel manager
+                                                                      panelManager(manager);
+
+                                                         }// end return
+                            })(markers, i)); // end listener
+
+}; 
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ MARKERS MANAGER/SELECTOR
+function selector(clicked_id, markers){  
+
+                    filter = clicked_id;
+
+                    layers["AllWalks"].setMap(null);  
+                    layers["YelowBus"].setMap(null);
+ 
+                    for (i = 0; i < group.length; i++) {   
+
+                       if(filter === "All" || filter === group[i].subcategory || group[i].category === "MainLocal Sponsors" ||group[i].subcategory === "Fix"){ 
+  
+                                  group[i].setMap(map) 
+
+                                  if (filter === "All" || group[i].subcategory === "Fix" || group[i].category === "MainLocal Sponsors"){  
+                                       group[i].widthF = group[i].width;
+                                       group[i].minvisibleF = group[i].minvisible;                                       
+
+                                      }// end id all
+                                  else {  
+                                       if(group[i].subsubcategory === "A"){
+                                                    group[i].widthF = (50*group[i].ratio);
+                                                    group[i].minvisibleF = 9;  
+                                       }
+                                       if(group[i].subsubcategory === "B"){
+                                                    group[i].widthF = (45*group[i].ratio);
+                                                    group[i].minvisibleF = 13;  
+                                       }
+                                  }// end else  
+
+                        } else{ group[i].setMap(null);}// end filter  
+
+                     }// end for    
+
+                     manager(); 
+
+}// end function selector
+
+function manager(){
+   
+                       document.getElementById("zoomlevel").innerHTML = map.getZoom();
+          
+                       for (i = 0; i < group.length; i++) {    
+
+                                     //zoom marker visible 
+                                             if (map.getZoom() >= group[i].minvisibleF) {   
+                                                   group[i].setVisible(true);
+                                                   var width = group[i].widthF/Math.pow(group[i].power,group[i].minvisible)*Math.pow(group[i].power,map.getZoom());  
+                                                   var height = width/group[i].ratio-width; 
+                                             }  
+                                             else { group[i].setVisible(false) }// end zoom marker manager
+
+
+ 
+           if (group[i].category === "MainLocal Sponsors"){ 
+                 var p1 = new google.maps.LatLng(32.647937, -16.909748); 
+                 var p2 = 2.5; // indicates limite perimeter Klm
+                            if(calcDistance(group, p1)>=0.1 && calcDistance(group, p1)<=p2){  
+
+                                                           //** FORMULA**\\
+                             // size amplitude divided along perimeter distante with pertentage  +   remaing size divided along visible zoom levels with percentage										
+                             //   width-( width-minwidth )*100%/perimt.*(perim-atualperim)   +   ( width- (    -same-    ))) / zoom.amplitude*100%*(atualzoom-minzoom)															
+  
+   width =  width-(width-group[i].minwidth)*1/p2*(p2-calcDistance(group, p1))+((width-( width-(width-group[i].minwidth)*1/p2*(p2-calcDistance(group, p1))))/(4)*0.75*(map.getZoom()-group[i].minvisible));  
+   height = width/group[i].ratio-width;      
+                            }// end if inside distance calculation 
+            }// end if main Local Sponsor
+
+ 
+
+                                              image = new google.maps.MarkerImage('https://rquaresma22.github.io/MarketPlace/Icon/'+ group[i].image+'.png'); 
+    
+                                              if(height > group[i].maxheight || width > group[i].maxwidth){ 
+                                                         height = group[i].maxheight;  
+                                                         width = group[i].maxwidth;
+                                              }      
+                                              if(height < group[i].minheight || width < group[i].minwidth){ 
+                                                         height = group[i].minheight;  
+                                                         width = group[i].minwidth;
+                                              } 
+
+                                              var anchorx=(width/2)+((width/2)/100*group[i].anchorX);                                                                                   
+                                              var anchory=(height)+((height)/100*group[i].anchorY);
+              
+                                              var icon = image;
+                                              icon.scaledSize = new google.maps.Size(width,height);
+                                              icon.anchor= new google.maps.Point( anchorx, anchory); 
+                                              icon.size = new google.maps.Size(width,height); 
+                                              group[i].setIcon(icon);
+                                              console.log(group[i].icon.size); 
+
+                                   }// end for 
+
+}// end manager
+
+//canculate distance
+ function calcDistance(group,p1) {
+                return (google.maps.geometry.spherical.computeDistanceBetween(p1,group[i].getPosition() ) / 1000).toFixed(1);
+ }// end function
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++ ADD  NEW MARKER
+function add_new_Marker() { 
+
+     var elem = document.getElementById('imageform'); // image 
+     var elem2 = document.getElementById('selectForm'); // dropdown selection
+
+     if (document.getElementById('Title').value === "" || !elem.complete || elem2.value === "")   { 
+
+        alert("Please fill in all fields!!!!");
+            } else {  
+ 
+              for (i = 0; i < CategoryData.length; i++) {   
+
+                   if(CategoryData[i][0] === cat) { // get category  
+                                     image = CategoryData[i][9];
+                                              if(image === "costum"){ 
+                                                     image =  document.getElementById('Icon').value;
+                                              }  
+    
+                  var _img = document.getElementById('imageform');
+                  var newImg = new Image;
+
+                  newImg.onload = function() {
+                           _img.src = this.src;
+                   }
+                   newImg.src = elem.src;
+               
+                         title = document.getElementById('Title').value;    
+                         ratio = newImg.width/(newImg.width+newImg.height);
+                         position = position;
+                         anchorX = 0;
+                         anchorY = 0; 
+                         foto = "foto";   
+                         category = CategoryData[i][0];
+                         subcategory = document.getElementById('Sub_category').value;
+                         zIndex = CategoryData[i][1]; 
+                         onClick = CategoryData[i][2];  
+                         minvisible = CategoryData[i][3];
+                         maxvisible = CategoryData[i][4];   
+                         if(CategoryData[i][5] !=="costum"){ minwidth = CategoryData[i][5]*ratio;  minheight = CategoryData[i][5]-minwidth;}
+                                                           else { minwidth = 20*ratio;  minheight = 20-minwidth;};
+                         if(CategoryData[i][6] !=="costum"){ width = CategoryData[i][6]*ratio;   height = CategoryData[i][6]-width;}
+                                                           else { width = 50*ratio;   height = 50-width;}
+                         if(CategoryData[i][7] !=="costum"){  maxwidth = CategoryData[i][7]*ratio;   maxheight = CategoryData[i][7]-maxwidth;}
+                                                           else {maxwidth = 200*ratio;   maxheight = 200-maxwidth;}
+                         if(CategoryData[i][8] !=="costum"){  power = CategoryData[i][8]; } 
+                                                           else { power = 1;}
+
+
+                         iconimage = new google.maps.MarkerImage(imageform); 
+
+                         map_markers(); 
+
+                   }   
+              }// end for 
+                                       closeForm(); 
+
+                                       manager();
+                                        
+                                       map.setZoom(minvisible); map.setCenter(position); 
+
+                          
+  }// end if all fields ok
+            
+
+ }// end add marker function
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++  FILL Dropdown Menu Left Button & popup select Form  ++++++++++++++++++++++++++++++++++
+ $(document).ready(function () { 
+      function recurseMenu(parent) {  // DownMenu from Array 
+            var s = '';
+            for (var x in menuItems) {
+                 if (menuItems[x].parentId == parent) { 
+           
+                         if (menuItems[x].childCount > 0) { 
+                                    s += '<li class="dropdown-submenu">'
+                                    s += '<a class="test" tabindex="-1" href="#">'+menuItems[x].title
+                                    s += '<span class="caret"></span></a>'
+                                    s += '<ul class="dropdown-menu">' 
+                                    s +=  recurseMenu(menuItems[x].id);   
+                         } 
+                         if (menuItems[x].childCount == 0)  {
+                                    s += '<li class="dropdown-submenu"><a   href="#">' + menuItems[x].title;
+                         } 
+
+                       s += '</a></li>'; 
+                   }
+           }return s + '</ul>'; // end for
+       } // end function recurseMenu
+
+       $("#listContainer").html(recurseMenu()); // fill the DownMenu leftButton
+       $("#category").html(recurseMenu()); // fill popup dropdpwn
+ 
+
+       $('.dropdown-submenu a.test').on("click", function(e){
+             $(this).parent().parent().find('.dropdown-menu').hide(); 
+             $(this).next('ul').toggle();
+             e.stopPropagation();
+             e.preventDefault();  
+         }); 
+
+       $(document).on('click', '.dropdown-menu li a', function() {
+             $(this).parent().parent().parent().find('.dropdown-menu').val($(this).html()); 
+             cat = $(this).text();   // keep the category select
+
+             if (Button_clicked === "Control_left"){
+                  $('#select').text(cat); 
+                  lastmarker = [];
+                  for (var i = 0; i < group.length; i++) { 
+                            if ( group[i].category === cat){ 
+                                      lastmarker.push(group[i]);          
+                             } 
+                  }  
+                  var manager = "Category";
+                  panelManager(manager);
+            }
+
+             if (Button_clicked === "formCategory"){  
+                  $('#selectForm').val(cat); 
+                  $('#selectForm').text(cat);  
+                  popup_manager(cat);
+             } 
+        }); // end (document on click)  
+});// end ready function
+
+
+
+
+// //++++++++++++++++++++++++++++++++++++++++++++++++++++++  POPUP FORMULARY: manage blocks 
+ function popup_manager(clicked_id) { 
+    Button_clicked = clicked_id;  
+var elem2 = document.getElementById('selectForm');
+ 
+        for (i = 0; i < CategoryData.length; i++) { 
+                if (CategoryData[i][0] === cat) {   
+                        image =  CategoryData[i][9]; 
+                 }// end if
+           }// end for 
+
+     if( image =="costum" || Button_clicked === 'more_popup'){
+         document.getElementById("Sub_category").style.display='block';
+         document.getElementById("Icon").style.display='block';
+         document.getElementById("imageform").style.display='block'; 
+         document.getElementById("personalized").style.display='block';
+ 
+         var str = document.getElementById('Icon').value;
+         imageform= 'https://rquaresma22.github.io/MarketPlace/Icon/'+str+'.png';
+         document.getElementById("imageform").src = imageform;
+  
+     } else {    
+         document.getElementById("personalized").style.display='none';
+         document.getElementById("imageform").style.display='block'; 
+         imageform= 'https://rquaresma22.github.io/MarketPlace/Icon/'+image+'.png';
+         document.getElementById("imageform").src = imageform;
+     }
+ }
+
+
+ function closeForm() { // CLOSE POPUP FORM
+    document.getElementById('Title').value = '' 
+    document.getElementById('Sub_category').value = '' 
+    document.getElementById('Icon').value = '' 
+    document.getElementById("Icon").style.display='none';
+    document.getElementById("Sub_category").style.display='none'; 
+    document.getElementById("form").style.display='none'; 
+    document.getElementById("personalized").style.display='none';
+ }
+
+
+ 
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++  Panel_Right: manage panel partes   //++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+function panelManager(manager){ 
+ 
+    document.getElementById("panel").style.display='block';
+
+    if ( manager === "Category" ){  
+        document.getElementById("sizePanel").style.display='block'
+        document.getElementById("zoomPanel").style.display='block'
+        document.getElementById("positionPanel").style.display='none'
+    }
+    else if (manager === "Level" ){
+        document.getElementById("sizePanel").style.display='block'  
+        document.getElementById("zoomPanel").style.display='block'
+        document.getElementById("positionPanel").style.display='none'
+    }
+   else if ( manager ==="individual" ){  
+        document.getElementById("sizePanel").style.display='block'
+        document.getElementById("zoomPanel").style.display='block'
+        document.getElementById("positionPanel").style.display='block' 
+    }
+       
+    infData(lastmarker[i], manager);
+
+    for (var i = 0; i < lastmarker.length; i++) { 
+          lastmarker[i].setAnimation(google.maps.Animation.BOUNCE);  
+          lastmarker[i].setAnimation(null);
+      }
+};
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++ INFO_PANEL: toggle show/hide 
+function infPanel() { 
+        var x = document.getElementById("infPanel");
+        if (x.style.display === "none") {
+                x.style.display = "block";
+         } else { 
+         x.style.display = "none";
+    }
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++ INFO_PANEL: data
+function infData(markers, manager){
+ document.getElementById('Change_Category').value ="";
+     for (var i = 0; i < lastmarker.length; i++) {       
+            title = lastmarker[i].getTitle();
+            size = Math.round(lastmarker[i].width)+"/ "+Math.round(lastmarker[i].height);
+            minwidth = lastmarker[i].minwidth.toFixed(0);
+            minheight = lastmarker[i].minheight.toFixed(0);
+            maxwidth = lastmarker[i].maxwidth.toFixed(0);
+            maxheight = lastmarker[i].maxheight.toFixed(0);
+            visibility = lastmarker[i].minvisible+" to "+lastmarker[i].maxvisible;
+            anchorage = " x("+lastmarker[i].anchorX+"), y("+lastmarker[i].anchorY+")";
+            index = lastmarker[i].zIndex;
+            coordinates = lastmarker[i].getPosition().lat()+","+lastmarker[i].getPosition().lng();
+            category = lastmarker[i].category;
+            subcategory = lastmarker[i].subcategory;      
+ 
+            content = "<div style='font-size:16px;'>"+"<b><u>Title:</u> </b>"+ title+"</div>"+
+                      "<p><div style='font-size: 14px; '>"+"<p><b>Base size: </b>"+size+" ["+(lastmarker[i].height+lastmarker[i].width).toFixed(0)+"];"+" (at minvisible )" 
+
+                                                      +"<p><b>Pow: </b>"+lastmarker[i].power.toFixed(2)+"; Size Icon:  "+lastmarker[i].icon.size.width.toFixed(0)+"/"+ 
+                                                            lastmarker[i].icon.size.height.toFixed(0) +" ["+(lastmarker[i].icon.size.width+lastmarker[i].icon.size.height).toFixed(0)+"];" 
+                                                      +"<p><b>Min: </b>"+minwidth+"/"+minheight+" ["+(lastmarker[i].minwidth+lastmarker[i].minheight).toFixed(0)+"];"+"<b> Max: </b>"+maxwidth+"/"+maxheight 
+                                                            +" ["+(lastmarker[i].maxwidth+lastmarker[i].maxheight).toFixed(0)+"];"
+                                                      +"<p><b>Visibility: </b>"+visibility +" zoom " + "<b>Index: </b>" +index + ";"
+                                                      +"<p><b> Anchor: </b>" + anchorage+";"
+                                                      +"<p><b> Coordinates: </b>"+ coordinates + ";"
+                                                      +"<p><b> Category: </b>" + category +";"
+                                                      +"<p><b> SubCategory: </b>" + subcategory +";"
+                                                      +"<p><b> Change Category:</b>"
+                                                      +"</div>" 
+                                                     
+            document.getElementById("infData").innerHTML = content;
+          
+      }
+};
+// ++++++++++++++++++++++ down list change Marker Category right panel
+function addOption_list(){ 
+     for(var x = 0; x < CategoryData.length; x++){ 
+           addOption(document.drop_list.Change_Category, CategoryData[x][0],CategoryData[x][0]); 
+         }
+}
+function addOption(selectbox,text,value )
+{
+	var optn = document.createElement("OPTION");
+	optn.text = text;
+	optn.value = value; 
+	selectbox.options.add(optn); 
+}
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++  // CLOSE RIGHT PANEL
+ function closePanel() { 
+    document.getElementById("panel").style.display='none' 
+    lastmarker = []
+    $('#select').text('Select:');  
+ }
+
+
+
+
+// +++++++++++++++++++++++++++++++ ALL BUTTONS CLICKED FUNCTIONS
+function reply_click(clicked_id){ 
+   
+    Button_clicked = clicked_id;  
+
+    for (var i = 0; i < lastmarker.length; i++) {
+          if ( clicked_id === '-'){
+                    latestHeight = lastmarker[i].height;
+                              
+                    lastmarker[i].height = Math.round(lastmarker[i].height-2);  
+                    lastmarker[i].width = Math.round(lastmarker[i].height*lastmarker[i].width/latestHeight);    
+                    if(lastmarker[i].width < lastmarker[i].minwidth || lastmarker[i].height < lastmarker[i].minheight){
+                                   lastmarker[i].width = lastmarker[i].minwidth
+                                   lastmarker[i].height = lastmarker[i].minheight}
+ 
+                    infData();
+                                                 }
+          else if ( clicked_id === '+'){
+                    latestHeight = lastmarker[i].height;
+                    lastmarker[i].height = Math.round(lastmarker[i].height+3);  
+                    lastmarker[i].width = Math.round(lastmarker[i].height*lastmarker[i].width/latestHeight);    
+                    if(lastmarker[i].width > lastmarker[i].maxwidth || lastmarker[i].height > lastmarker[i].maxheight){
+                                   lastmarker[i].width = lastmarker[i].maxwidth
+                                   lastmarker[i].height = lastmarker[i].maxheight}   
+                    infData(); }// end if
+                
+         else if ( clicked_id === 'pow-'){
+                    lastmarker[i].power = lastmarker[i].power-0.02;  
+                    height =  lastmarker[i].height/Math.pow(lastmarker[i].power,group[i].minvisible)*Math.pow(lastmarker[i].power,map.getZoom()) ; 
+                    width = lastmarker[i].width/Math.pow(lastmarker[i].power,group[i].minvisible)*Math.pow(lastmarker[i].power,map.getZoom()) ; 
+                    infData();            } // end if
+         else if ( clicked_id === 'pow+'){
+                    lastmarker[i].power = lastmarker[i].power+0.03;  
+                    height = lastmarker[i].height/Math.pow(lastmarker[i].power,group[i].minvisible)*Math.pow(lastmarker[i].power,map.getZoom()) ; 
+                    width = lastmarker[i].width/Math.pow(lastmarker[i].power,group[i].minvisible)*Math.pow(lastmarker[i].power,map.getZoom()) ; 
+                    infData();   }// end if 
+
+         else if ( clicked_id === 'min-'){
+                    latestminwidth = lastmarker[i].minwidth
+                    lastmarker[i].minwidth = Math.round(lastmarker[i].minwidth-2);
+                    lastmarker[i].minheight = Math.round(lastmarker[i].minheight*lastmarker[i].minwidth/latestminwidth);
+                    infData();  }// end if 
+         else if ( clicked_id === 'min+'){
+                    latestminwidth = lastmarker[i].minwidth
+                    lastmarker[i].minwidth = Math.round(lastmarker[i].minwidth+3);
+                    lastmarker[i].minheight = Math.round(lastmarker[i].minheight*lastmarker[i].minwidth/latestminwidth);
+                    if (lastmarker[i].minwidth > lastmarker[i].width || lastmarker[i].minheight > lastmarker[i].height) {
+                                   lastmarker[i].minwidth = lastmarker[i].width
+                                   lastmarker[i].minheight = lastmarker[i].height  }
+                    infData();  }// end if 
+         else if ( clicked_id === 'Max-'){
+                    latestmaxwidth = lastmarker[i].maxwidth;
+                    lastmarker[i].maxwidth = Math.round(lastmarker[i].maxwidth-2);
+                    lastmarker[i].maxheight = Math.round(lastmarker[i].maxheight*lastmarker[i].maxwidth/latestmaxwidth);
+                    if (lastmarker[i].maxwidth < lastmarker[i].width || lastmarker[i].maxheight < lastmarker[i].height) {
+                                   lastmarker[i].maxwidth = lastmarker[i].width
+                                   lastmarker[i].maxheight = lastmarker[i].height  }
+                    infData();  }// end if 
+         else if ( clicked_id === 'Max+'){
+                    latestmaxwidth = lastmarker[i].maxwidth;
+                    lastmarker[i].maxwidth = Math.round(lastmarker[i].maxwidth+3);
+                    lastmarker[i].maxheight = Math.round(lastmarker[i].maxheight*lastmarker[i].maxwidth/latestmaxwidth);
+
+                    infData();  }// end if 
+                    
+        else if ( clicked_id === 'MinV-'){
+                    minvisible = lastmarker[i].minvisible-1; 
+                    if (minvisible <2) { minvisible = 2};
+                    lastmarker[i].minvisible = minvisible
+                    infData();   }// end if 
+        else if ( clicked_id === 'MinV+'){
+                    maxvisible = lastmarker[i].maxvisible; 
+                    minvisible = lastmarker[i].minvisible+1; 
+                    if (minvisible <2) { minvisible = 2};
+                    if (minvisible >=maxvisible) { minvisible = maxvisible-1};
+                    lastmarker[i].minvisible = minvisible
+                    infData();   }// end if 
+         else if ( clicked_id === 'MaxV-'){
+                    minvisible =lastmarker[i].minvisible
+                    maxvisible = lastmarker[i].maxvisible-1; 
+                    if (maxvisible >18) { maxvisible = 18};
+                    if (maxvisible <=minvisible) { maxvisible = minvisible+1};
+                    lastmarker[i].maxvisible =  maxvisible
+                    infData();   }// end if 
+         else if ( clicked_id === 'MaxV+'){
+                    minvisible =lastmarker[i].minvisible
+                    maxvisible = lastmarker[i].maxvisible+1; 
+                    if (maxvisible >18) { maxvisible = 18};
+                    if (maxvisible <=minvisible) { maxvisible = minvisible+1};
+                    lastmarker[i].maxvisible =  maxvisible
+                    infData();   }// end if 
+
+         if ( clicked_id === 'CoordLeft'){ 
+                    lat = lastmarker[i].getPosition().lat()+0;   
+                    lng= lastmarker[i].getPosition().lng()-0.00015;    
+                    position = new google.maps.LatLng(lat , lng);
+                    lastmarker[i].setPosition(position);
+                    infData();                           }   
+         if ( clicked_id === 'CoordRight'){ 
+                    lat = lastmarker[i].getPosition().lat()+0;   
+                    lng= lastmarker[i].getPosition().lng()+0.00010;   
+                    position = new google.maps.LatLng(lat , lng);
+                    lastmarker[i].setPosition(position);
+                    infData();                           }      
+         if ( clicked_id === 'CoordUp'){ 
+                    lat = lastmarker[i].getPosition().lat()+0.00015;   
+                    lng= lastmarker[i].getPosition().lng()+0;   
+                    position = new google.maps.LatLng(lat , lng);
+                    lastmarker[i].setPosition(position);
+                    infData();                           }    
+         if ( clicked_id === 'CoordDown'){ 
+                    lat = lastmarker[i].getPosition().lat()-0.00010;    
+                    lng= lastmarker[i].getPosition().lng()+0;   
+                    position = new google.maps.LatLng(lat , lng);
+                    lastmarker[i].setPosition(position);
+                    infData();                           }
+
+         if ( clicked_id === 'AnchorLeft'){ 
+                   lastmarker[i].anchorX = lastmarker[i].anchorX-5;  lastmarker[i].anchorY = lastmarker[i].anchorY;    infData();   }    
+         if ( clicked_id === 'AnchorRight'){ 
+                   lastmarker[i].anchorX =lastmarker[i].anchorX+5;  lastmarker[i].anchorY = lastmarker[i].anchorY;     infData();   }    
+         if ( clicked_id === 'AnchorUP'){ 
+                   lastmarker[i].anchorX = lastmarker[i].anchorX;   lastmarker[i].anchorY =lastmarker[i].anchorY-5;    infData();   }           
+         if ( clicked_id === 'AnchorDown'){ 
+                   lastmarker[i].anchorX = lastmarker[i].anchorX;   lastmarker[i].anchorY =lastmarker[i].anchorY+5;     infData();  }       
+ 
+         if ( clicked_id === 'Change_CatButton'){ 
+                  if(confirm("Change to " + document.getElementById('Change_Category').value + "?")) {
+                         lastmarker[i].category = document.getElementById('Change_Category').value;       infData();  } }    
+  
+         if ( clicked_id === 'Delete'){ 
+                    if(confirm("Delete Marker?")) {
+                             lastmarker[i].setMap(null);
+                             lastmarker[i] = []   
+                             closePanel();
+                             group.splice(i, 1); 
+
+                          }// end if confirm
+                    else { return false }        }// end if
+
+         lastmarker[i].widthF = lastmarker[i].width;
+         lastmarker[i].minvisibleF = lastmarker[i].minvisible
+         manager(markers); 
+    }
+}// end Painel Change size
+
+function download(clicked_id, text, filename, type) { 
+
+      if (clicked_id === "group"){ array = group; } else { array = group2; }  
+ 
+      text = "var locations =["+"\r\n";   
+     
+      var n = 1;
+        for(var x = 0; x < CategoryData.length; x++){ 
+
+            for(var y = 0; y < array.length; y++){
+               if(CategoryData[x][0] === array[y].category ){
+
+      //+++++++++++++ GENERATE LOCATIONS DATA
+               text +=  "[" + n+ "," + 
+                        '"'+array[y].category +'"'+  "," +                      // category 
+                        '"'+array[y].getTitle() +'"'+  "," +                    // Title 
+                        '"'+array[y].image + '"'+  "," +                        // Image
+                         array[y].minvisible +  "," +                           // minVisible
+                         array[y].maxvisible +  "," +                           // maxVisible           
+                        (array[y].minwidth+array[y].minheight) +  "," +         // minSize
+                        (array[y].width+array[y].height) +  "," +               // Size
+                        (array[y].maxwidth+array[y].maxheight) +  "," +         // maxSize
+                         array[y].power +  "," +          // power
+
+                         array[y].ratio +  "," +  
+
+                        array[y].getPosition().lat() +  "," +  
+                        array[y].getPosition().lng() +  "," +  
+   
+                        array[y].anchorX +  "," +  
+                        array[y].anchorY +  "," +     
+                         '"'+ array[y].foto + '"' +","+ 
+                         '"'+ array[y].subcategory + '"' +  "],"
+                        +"\r\n";  
+                        n++; 
+               }// end if 
+             } // end for           
+          } // end for   
+
+               text +=  "]//Finish"+"\r\n"+"\r\n"+"var CategoryData =["+"\r\n";  
+ 
+      //+++++++++++++ GENERATE CATEGORY DATA
+        for(var x = 0; x < CategoryData.length; x++){ 
+
+               text +=  "[" +  
+                        '"'+CategoryData[x][0] +'"'+  "," +   //category
+                         CategoryData[x][1] + "," +           // index
+                        '"'+CategoryData[x][2] +'"'+  "," +   // onClick
+                         CategoryData[x][3] + "," +           // minVisible
+                         CategoryData[x][4] + ","  ;          // maxVisible
+               
+                        for(var y = 0; y < array.length; y++){    
+                            if( CategoryData[x][0] === array[y].category){
+   
+                                if(CategoryData[x][5] !== "costum") { 
+                                     text +=  (array[y].minwidth+array[y].minheight)+ ",";  
+                                 } else {  text += '"'+"costum"+'"'+ ","};
+                                if(CategoryData[x][6] !== "costum") {
+                                     text +=  (array[y].width+array[y].height)+ ",";  
+                                 }else {  text += '"'+"costum"+'"'+ ","};
+
+                                if(CategoryData[x][7] !== "costum") {
+                                     text +=  (array[y].maxwidth+array[y].maxheight)+ ",";  
+                                 }else {  text += '"'+"costum"+'"'+ ","};
+                                if(CategoryData[x][8] !== "costum") {
+                                     text +=  (array[y].power)+ ",";  
+                                 }else {  text += '"'+"costum"+'"'+ ","};
+
+                                 break; }
+                       } // end for   
+                           text +=   '"'+CategoryData[x][9] +'"' + 
+                                     "],"+"\r\n" ;            
+          } // end for   
+
+          text +=  "]//Finish";  
+
+
+              var file = new Blob( 
+                      [text] ,
+                       {type: "text/plain"}); // fim blob  
+
+
+    // gerar txt doc 
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+        url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = "meus marcadores";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);   
+        }, 0); 
+    }// end if
+ 
+}// end download Function
+
+function push_array(){
+
+    for (var i = 0; i < lastmarker.length; i++) { 
+           group2.push(lastmarker[i]);  
+           
+      }
+};
+ function zoom_controlF(clicked_id){ 
+  off = "rgba(255, 255, 255, 0.2)";
+  on = "rgba(255, 255, 255, .6)";
+ 
+    document.getElementById("zoom_out").style.backgroundColor = off;  
+    document.getElementById("zoom_in").style.backgroundColor = off;   
+ 
+
+    document.getElementById(clicked_id).style.backgroundColor = on;  
+
+    if (map.getZoom() >= 15){ 
+            _Z = 1;
+            if (map.getZoom() === 15 && clicked_id === "zoom_out"){
+                   _Z = 2;
+             }
+     } else { _Z = 2; }
+
+    if (clicked_id === "zoom_out"){map.setZoom(map.getZoom()-_Z)};
+    if (clicked_id === "zoom_in"){ map.setZoom(map.getZoom()+_Z)};
+ 
+
+    var c = map.getCenter();
+    map.panTo(c); 
+
+ 
+}
+
+google.maps.event.addDomListener(window, 'load', initialize); 
+
+    </script>
+  </head> 
+  <body>
+
+
+    <div id="form" style="display: none;"
+         <table><b>New Marker: </b> 
+         <img id="imageform"  style="display: block;"  alt="load..." height="42" width="42">
+ 
+         <p> <tr><td>Title:</td> <td><input  type='text' id='Title'  /> </td> </tr></p>  
+         
+         <div id="formCategory" value="" onclick="reply_click(this.id)" >  
+            <div class="dropdown">
+            <button id="selectForm" class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Select
+            <span class="caret"></span></button>
+
+            <div id="category" value="ds"class="dropdown-menu"  ></div>
+           
+    </div>
+ </div>
+
+     <input id="Add" onclick="add_new_Marker()" type=button value="Add Marker"  style="width:100px; height:30px; font-size: 16px; "  border:0px;">
+     <tr><td></td><td><input type='button' value='Cancel' onclick="closeForm()" /></td></tr>
+     <input id="more_popup" onclick=popup_manager(this.id) type=button value="more"  style="width:50px; height:25px; font-size: 13px; "  border:0px;">  
+
+           <Div id="personalized" style="display: none;"  
+
+                 <p> <tr><td><hr>Subcategory</td>  <td><select id='Sub_category'style="display: block;"> +
+                               <option value='' ></option>
+                               <option value='Museum' >Museum</option>
+                               <option value='Nightlife' >Nightlife</option>
+                               <option value='Walk' >Walk</option>
+                 </select> </td></tr></p>
+
+                 <p><tr><td>Icon name: </td> <td><input type='text' id='Icon'style="display: block;"/> </td> </tr>
+                 <input id="Load" onclick="popup_manager()" type=button value="load"  style="width:50px; height:30px; font-size: 16px; "  border:0px;">
+          </Div>
+ 
+    </div>
+
+
+ <div id="panel" style="display: none;">
+
+       <div id="sizePanel" style="display: block;">
+
+                 <input id="-" onclick=reply_click(this.id) type=button value="Base -"  style="width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="+" onclick=reply_click(this.id) type=button value="Base +"  style="width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="pow-" onclick=reply_click(this.id) type=button value="Pow -"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="pow+" onclick=reply_click(this.id) type=button value="Pow +"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="min-" onclick=reply_click(this.id) type=button value="min &#9652"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="min+" onclick=reply_click(this.id) type=button value="min &#9652"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="Max-" onclick=reply_click(this.id) type=button value="Max &#9660"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="Max+" onclick=reply_click(this.id) type=button value="Max &#9660"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;"><p>
+
+        </Div>
+
+        <div id="zoomPanel" style="display: block;">
+
+                 <input id="MinV-" onclick=reply_click(this.id) type=button value="min - &#x1F50D"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="MinV+" onclick=reply_click(this.id) type=button value="min - &#x1F50D"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="MaxV-" onclick=reply_click(this.id) type=button value="Max + &#x1F50D"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;"> 
+                 <input id="MaxV+" onclick=reply_click(this.id) type=button value="Max + &#x1F50D"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;"> <p>
+        </Div>
+        <div id="positionPanel" style="display: block;">
+                 <input id="CoordLeft" onclick=reply_click(this.id) type=button value="Coord:&#8656"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">  
+                 <input id="CoordRight" onclick=reply_click(this.id) type=button value="Coord:&#8680"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="CoordUp" onclick=reply_click(this.id) type=button value="Coord:&#8679"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="CoordDown" onclick=reply_click(this.id) type=button value="Coord:&#8681"  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+
+                 <input id="AnchorLeft" onclick=reply_click(this.id) type=button value=&#9875&#8656  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="AnchorRight" onclick=reply_click(this.id) type=button value=&#9875&#8680  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="AnchorUP" onclick=reply_click(this.id) type=button value=&#9875&#8679  style="  width:60px; height:30px; font-size: 12px; "  border:0px;">
+                 <input id="AnchorDown" onclick=reply_click(this.id) type=button value=&#9875&#8681  style="  width:60px; height:30px; font-size: 12px; "  border:0px;"> <p> 
+         </Div>
+ 
+         <p>     <input id="more" onclick= infPanel(); type=button value="More"  style=" width:60px; height:30px; font-weight: bold; font-size: 12px; align:right; "  border:0px;">
+                 <input id="Close" onclick= closePanel(); type=button value="ClosePanel"  style=" width:85px; height:30px; font-weight: bold; font-size: 12px; align:right; "  border:0px;">
+                 <input id="Delete" onclick=reply_click(this.id) type=button value="DeleteMarker"  style="  width:100px; height:30px; font-weight: bold; font-size: 12px; align:right; "  border:0px;">
+
+         <div id="infPanel" style="display: none;   font-family: Times New Roman;  text-align: left;">
+
+                 <b><hr> </b>  
+
+                 <div id="infData"> 
+                  </Div>  
+ 
+                 <FORM name="drop_list"  method="POST" > 		
+                        <SELECT id="Change_Category" >
+                        <Option value="" > </option>
+                        </SELECT>
+                 </form>   
+
+                 <input id="Change_CatButton" onclick=reply_click(this.id) type=button value="OK"  style="width:40px; height:20px; font-size: 12px; "  border:0px;">
+         </Div>
+  </div> 
+
+
+  <div id="zoomlevel" style=" position: absolute; z-index: 5; width:auto; height: auto; left: 0.4%;background-color: #fff; padding: 7px; bottom: 1%;"></div>
+  <div id="map-canvas"></div>
+
+
+
+
+
+ <div id="Control_left" onclick=reply_click(this.id)> 
+    <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" onclick="closePanel();closeForm();" id="select" type="button" data-toggle="dropdown">Select
+    <span class="caret"></span></button>
+
+           <div id="listContainer" class="dropdown-menu" ></div>
+             
+    </div>
+ </div>
+ <div id="save">
+   <input id="group" onclick="download(this.id);" type=button value="Download All" >  
+   <input id="open" onclick="push_array();" type=button value="Add to" >  
+   <input id="group2" onclick="download(this.id);" type=button value="open" >    
+</div>
+
+
+
+
+    <div id="controls">
+
+    <input type="button" id="AllWalks" onclick="selector(this.id);layers[this.id].setMap(map);" style= "background-image:url(https://rquaresma22.github.io/MarketPlace/Icon/walkA.png); background-size:100%;
+     width:40px; height:40px; border:0px;" />
+
+    <input type="button" id="YelowBus" onclick="selector(this.id);layers[this.id].setMap(map);" style= "background-image:url(https://rquaresma22.github.io/MarketPlace/Icon/yelowbus.png); background-size:100%; 
+     width:40px; height:40px; border:0px;" />
+
+     <input type="button" id="All" onclick="selector(this.id)" style= "background-image:url(https://rquaresma22.github.io/MarketPlace/Icon/atractions.png); background-size:100%; 
+     width:40px; height:40px; border:0px;" />   
+
+     <input type="button" id="layer_02" onclick="clear_map();" style= "background-image:url(https://rquaresma22.github.io/MarketPlace/Icon/google_maps.png); background-size:100%;
+     width:40px; height:40px; border:0px;" />  
+   
+    <input type="button" id="All" onclick="selector(this.id)" style= "background-image:url(https://rquaresma22.github.io/MarketPlace/Icon/geolocation.png); background-size:100%;  
+     width:40px; height:40px; border:0px;" />   
+
+  </div> 
+ 
+     <div id="zoom_controls">
+
+    <input type="button" id="zoom_out"; 
+              style= "background-size:100%;  width:40px; height:40px; border-radius:50%;"
+              value="-" onclick="zoom_controlF(this.id);" />
+
+    <input type="button" id="zoom_in"; 
+              style= "background-size:100%; margin-left: 2%;  width:40px; height:40px; border-radius:50%;"
+              value="+" onclick="zoom_controlF(this.id);" /> 
+ 
+  </div> 
+ 
+
+  </body>
+</html>
+
+
+
+
+
+
